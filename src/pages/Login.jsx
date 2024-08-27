@@ -17,10 +17,7 @@ export const Login = () => {
   return (
     <div>
       <Navbar headtext={'Login'} headtextSize={'4xl'} paraText={'Sign in to continue'}/>
-      {/* <div className='bg-[#0a856d] text-white h-[15vh] text-center'>
-        <p className='pt-[2%] text-4xl'>Login</p>
-        <p className='text-gray-300'>Sign in to continue</p>
-      </div> */}
+
       <Box
         component="form"
         sx={{ '& .MuiTextField-root': { m: 1} }}
