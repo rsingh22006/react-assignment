@@ -1,9 +1,9 @@
 import React from 'react';
 import {TextField, InputLabel, InputAdornment, FormControl, Box, OutlinedInput, Button, Input } from '@mui/material'
 import IconButton from '@mui/material/IconButton';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import {Visibility,VisibilityOff} from '@mui/icons-material';
 import {Link} from 'react-router-dom'
+import { Navbar } from '../components/Navbar';
 
 export const Login = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -16,23 +16,23 @@ export const Login = () => {
 
   return (
     <div>
-      <div className='bg-[#0a856d] text-white h-[15vh] text-center'>
+      <Navbar headtext={'Login'} headtextSize={'4xl'} paraText={'Sign in to continue'}/>
+      {/* <div className='bg-[#0a856d] text-white h-[15vh] text-center'>
         <p className='pt-[2%] text-4xl'>Login</p>
         <p className='text-gray-300'>Sign in to continue</p>
-      </div>
+      </div> */}
       <Box
         component="form"
-        sx={{ '& .MuiTextField-root': { m: 1, width: '50ch' } }}
+        sx={{ '& .MuiTextField-root': { m: 1} }}
         noValidate
         autoComplete="off"
         className='mt-[7vh] w-[70vw] mx-auto'
       >
         <div>
-          <TextField id="standard-basic" label="USERNAME" variant="standard" />
-
+          <TextField id="standard-basic" label="USERNAME" variant="standard" className='w-full lg:w-1/2' />
         </div>
         <div>
-          <FormControl sx={{ m: 1, width: '50ch' }} variant="standard">
+          <FormControl sx={{ m: 1}} className='w-full lg:w-1/2' variant="standard">
             <InputLabel htmlFor="standard-adornment-password">NEW PASSWORD</InputLabel>
             <Input
               id="standard-adornment-password"

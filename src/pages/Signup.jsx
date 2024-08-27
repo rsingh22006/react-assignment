@@ -1,8 +1,7 @@
 import React from 'react';
-import { FilledInput, TextField, InputLabel, InputAdornment, FormControl, Box, OutlinedInput, Button, Input } from '@mui/material'
-import IconButton from '@mui/material/IconButton';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import {TextField, InputLabel, InputAdornment, FormControl, Box, OutlinedInput, Button, Input,IconButton } from '@mui/material'
+import {Visibility,VisibilityOff} from '@mui/icons-material';
+import { Navbar } from '../components/Navbar';
 
 export const Signup = () => {
     const [showPassword, setShowPassword] = React.useState(false);
@@ -15,26 +14,24 @@ export const Signup = () => {
 
     return (
         <div>
-            <div className='bg-[#0a856d] text-white h-[15vh] text-center'>
-                <p className='pt-[2%]'>Create new Account</p>
-            </div>
+            <Navbar headtext={'Create new Account'} />
             <Box
                 component="form"
-                sx={{ '& .MuiTextField-root': { m: 1, width: '50ch' } }}
+                sx={{ '& .MuiTextField-root': { m: 1 } }}
                 noValidate
                 autoComplete="off"
                 className='mt-[7vh] w-[70vw] mx-auto relative'
             >
-                <div className='mb-[2vh]'>
-                    <TextField id="filled-basic" label="NAME" variant="filled" />
-                    <TextField id="standard-basic" label="USERNAME" variant="standard" />
+                <div className='mb-[2vh] flex justify-between flex-col lg:flex-row'>
+                    <TextField id="filled-basic" label="NAME" variant="filled" className='w-full lg:w-1/2' />
+                    <TextField id="standard-basic" label="USERNAME" variant="standard" className='w-full lg:w-1/2' />
                 </div>
-                <div className='mb-[6vh]'>
-                    <TextField id="standard-basic" label="EMAIL" variant="standard" />
-                    <TextField id="standard-basic" label="PHONE NO." variant="standard" />
+                <div className='mb-[6vh] flex justify-between flex-col lg:flex-row'>
+                    <TextField id="standard-basic" label="EMAIL" variant="standard" className='w-full lg:w-1/2' />
+                    <TextField id="standard-basic" label="PHONE NO." variant="standard" className='w-full lg:w-1/2' />
                 </div>
-                <div className='mb-[6vh]'>
-                    <FormControl sx={{ m: 1, width: '50ch' }} variant="standard">
+                <div className='mb-[6vh] flex justify-between flex-col lg:flex-row'>
+                    <FormControl sx={{ m: 1}} variant="standard" className='w-full lg:w-1/2'>
                         <InputLabel htmlFor="standard-adornment-password">NEW PASSWORD</InputLabel>
                         <Input
                             id="standard-adornment-password"
@@ -52,7 +49,7 @@ export const Signup = () => {
                             }
                         />
                     </FormControl>
-                    <FormControl sx={{ m: 1, width: '50ch' }} variant="standard">
+                    <FormControl sx={{ m: 1}} variant="standard" className='w-full lg:w-1/2'>
                         <InputLabel htmlFor="standard-adornment-password">CONFIRM NEW PASSWORD</InputLabel>
                         <Input
                             id="standard-adornment-password"
