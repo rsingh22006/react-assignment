@@ -2,10 +2,12 @@ import React, {useState} from 'react';
 import { TextField,IconButton, InputAdornment } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Navbar } from '../components/Navbar';
+import { useNavigate } from 'react-router-dom';
 
 export const Signup = () => {
     const ALPHA_REGEX = /^[a-zA-Z ]*$/;
     const ALPHA_NUM_CHAR_REGEX = /^[a-zA-Z0-9!@#$%&()*\\-`.+,/\"]*$/;
+    const navigate = useNavigate();
 
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
@@ -88,8 +90,8 @@ export const Signup = () => {
 
         if (isErrorOccured) return;
 
-        if (username && newPassword) return alert('Your details has been verified, Thanks!');
-        else return alert('Fill all the details');
+        alert('You have signed up, Redirecting to Login Thanks!');
+        return navigate('/login');
     }
 
     console.log('username outside', username)
