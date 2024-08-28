@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { TextField,InputAdornment, IconButton} from '@mui/material'
+import { TextField, InputAdornment, IconButton } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Link } from 'react-router-dom'
 import { Navbar } from '../components/Navbar';
@@ -24,40 +24,54 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('inside func username', username, 'password', password)
     if (!containsAlphabetsNumbersAndSpecialChars(username)) return setUserNameError(prev => !prev);
     if (username && password) return alert('Your details has been verified, Thanks!');
     else return alert('Fill all the details')
   }
+
+  console.log('outside username', username, 'password', password)
 
   return (
     <div>
       <Navbar headtext={'Login'} headtextSize={'4xl'} paraText={'Sign in to continue'} />
       <form autoComplete='off' className='mt-[7vh] w-[70vw] mx-auto' onSubmit={handleSubmit}>
         <div className='flex flex-col items-center gap-y-10'>
-          <TextField id="standard-basic" error={userNameError} helperText={userNameError ? 'USERNAME must contain combination of alphanumeric values with special characters only' : ''} variant="standard" className='w-full lg:w-1/2'
-            label="USERNAME" color="success" onKeyDown={(event) => {
+          <TextField
+            id="standard-basic"
+            error={userNameError}
+            helperText={userNameError ? 'USERNAME must contain combination of alphanumeric values with special characters only' : ''}
+            variant="standard"
+            className='w-full lg:w-1/2'
+            label="USERNAME"
+            color="success"
+            onKeyDown={(event) => {
               if (!ALPHA_NUM_CHAR_REGEX.test(event.key)) event.preventDefault()
-              setUsername(event.target.value);
+              const previousValue = event.target.value;
+              setUsername(previousValue + event.key);
             }}
-            InputLabelProps={{sx: {paddingLeft: '15px','&.MuiInputLabel-shrink':{fontSize:'14px'}}}}
-            inputProps={{sx:{paddingLeft: '15px'}}}
+            InputLabelProps={{ sx: { paddingLeft: '15px', '&.MuiInputLabel-shrink': { fontSize: '14px' } } }}
+            inputProps={{ sx: { paddingLeft: '15px' } }}
           />
-          <TextField id="standard-basic2" error={usernameAndPasswordMatchingError} helperText={usernameAndPasswordMatchingError ? 'USERNAME and PASSWORD should not be same' : ''} variant="standard" className='w-full lg:w-1/2'
+          <TextField
+            id="standard-basic2"
+            error={usernameAndPasswordMatchingError}
+            helperText={usernameAndPasswordMatchingError ? 'USERNAME and PASSWORD should not be same' : ''}
+            variant="standard"
+            className='w-full lg:w-1/2'
             type={showPassword ? 'text' : 'password'}
-            label="PASSWORD" color="success" onKeyDown={(event) => {
+            label="PASSWORD" color="success"
+            onKeyDown={(event) => {
               if (!ALPHA_NUM_CHAR_REGEX.test(event.key)) event.preventDefault()
-              setPassword(event.target.value);
+              const previousValue = event.target.value;
+              setPassword(previousValue + event.key);
             }}
-            InputLabelProps={{sx: {paddingLeft: '15px','&.MuiInputLabel-shrink':{fontSize:'14px'}}}}
+            InputLabelProps={{ sx: { paddingLeft: '15px', '&.MuiInputLabel-shrink': { fontSize: '14px' } } }}
             InputProps={{
-              sx:{paddingLeft: '15px'},
+              sx: { paddingLeft: '15px' },
               endAdornment:
                 <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={(e) => e.preventDefault()}
-                  >
+                  <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword}>
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
