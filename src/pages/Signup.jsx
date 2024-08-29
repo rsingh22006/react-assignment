@@ -82,8 +82,8 @@ export const Signup = () => {
             <Navbar headtext={'Create new Account'} />
             <form autoComplete='off' className='mt-[7vh] w-[70vw] mx-auto' onSubmit={handleSubmit}>
                 <div className='mb-[8vh] flex justify-between flex-col lg:flex-row gap-10'>
-                    <div className='flex flex-col w-full lg:w-1/2 justify-center align-center gap-y-2'>
-                        <label htmlFor="nameLable" className={`w-fit text-xs text-[#0a856d] pl-4 ${nameFocus || name.length > 0 ? 'block' : 'hidden'}`}>NAME</label>
+                    <div className='relative flex flex-col w-full lg:w-1/2 justify-center align-center gap-y-2'>
+                        <label htmlFor="nameLable" className={`absolute top-[-50%] w-fit text-xs text-[#0a856d] pl-4 ${nameFocus || name.length > 0 ? 'block' : 'hidden'}`}>NAME</label>
                         <input
                             type='text'
                             required
@@ -96,8 +96,8 @@ export const Signup = () => {
                             onBlur={() => setNameFocus(false)}
                         />
                     </div>
-                    <div className='flex flex-col w-full lg:w-1/2 justify-center align-center gap-y-2'>
-                        <label htmlFor="usernameLable" className={`w-fit text-xs ${!checkUsername && username.length > 0 ? 'text-error-color' : 'text-[#0a856d]'} pl-4 ${usernameFocus || username.length > 0 ? 'block' : 'hidden'}`}>USERNAME</label>
+                    <div className='relative flex flex-col w-full lg:w-1/2 justify-center align-center gap-y-2'>
+                        <label htmlFor="usernameLable" className={`absolute top-[-50%] w-fit text-xs ${!checkUsername && username.length > 0 ? 'text-error-color' : 'text-[#0a856d]'} pl-4 ${usernameFocus || username.length > 0 ? 'block' : 'hidden'}`}>USERNAME</label>
                         <input
                             type='text'
                             required
@@ -114,8 +114,8 @@ export const Signup = () => {
                     </div>
                 </div>
                 <div className='mb-[8vh] flex justify-between flex-col lg:flex-row gap-10'>
-                    <div className='flex flex-col w-full lg:w-1/2 justify-center align-center gap-y-2'>
-                        <label htmlFor="emailLable" className={`w-fit text-xs ${!checkEmail ? 'text-error-color' : 'text-[#0a856d]'} pl-4 ${emailFocus || email.length > 0 ? 'block' : 'hidden'}`}>EMAIL</label>
+                    <div className='relative flex flex-col w-full lg:w-1/2 justify-center align-center gap-y-2'>
+                        <label htmlFor="emailLable" className={`absolute top-[-50%] w-fit text-xs ${!checkEmail ? 'text-error-color' : 'text-[#0a856d]'} pl-4 ${emailFocus || email.length > 0 ? 'block' : 'hidden'}`}>EMAIL</label>
                         <input
                             type='text'
                             required
@@ -130,8 +130,8 @@ export const Signup = () => {
                         />
                         <p className='text-red text-left text-error-color text-sm'>{!checkEmail ? 'Your EMAIL is invalid' : ''}</p>
                     </div>
-                    <div className='flex flex-col w-full lg:w-1/2 justify-center align-center gap-y-2'>
-                        <label htmlFor="phoneNumberLable" className={`w-fit text-xs ${!checkPhoneNumber ? 'text-error-color' : 'text-[#0a856d]'} pl-4 ${phoneNumberFocus || phoneNumber.length > 0 ? 'block' : 'hidden'}`}>PHONE NO.</label>
+                    <div className='relative flex flex-col w-full lg:w-1/2 justify-center align-center gap-y-2'>
+                        <label htmlFor="phoneNumberLable" className={`absolute top-[-50%] w-fit text-xs ${!checkPhoneNumber ? 'text-error-color' : 'text-[#0a856d]'} pl-4 ${phoneNumberFocus || phoneNumber.length > 0 ? 'block' : 'hidden'}`}>PHONE NO.</label>
                         <div className={'flex items-center'}>
                         <span className={`${phoneNumberFocus || phoneNumber.length > 0 ? 'block' : 'hidden'}`}>+91</span>
                         <input
@@ -151,8 +151,8 @@ export const Signup = () => {
                     </div>
                 </div>
                 <div className='mb-[8vh] flex justify-between flex-col lg:flex-row gap-10'>
-                    <div className='flex flex-col w-full lg:w-1/2 justify-center align-center'>
-                        <label htmlFor="newPasswordLable" className={`w-fit text-xs ${newPasswordError ? 'text-error-color' : 'text-[#0a856d]'} pl-4 ${newPasswordFocus || newPassword.length > 0 ? 'block' : 'hidden'}`}>PASSWORD</label>
+                    <div className='relative flex flex-col w-full lg:w-1/2 justify-center align-center'>
+                        <label htmlFor="newPasswordLable" className={`absolute top-[-50%] w-fit text-xs ${newPasswordError ? 'text-error-color' : 'text-[#0a856d]'} pl-4 ${newPasswordFocus || newPassword.length > 0 ? 'block' : 'hidden'}`}>PASSWORD</label>
                         <div className='flex items-center' onFocus={() => setNewPasswordFocus(true)} onBlur={() => setNewPasswordFocus(false)}>
                             <input
                                 type={showNewPassword ? 'text' : 'password'}
@@ -170,8 +170,8 @@ export const Signup = () => {
                         </div>
                         <p className='text-red text-left text-error-color text-sm'>{newPasswordError}</p>
                     </div>
-                    <div className='flex flex-col w-full lg:w-1/2 justify-center align-center'>
-                        <label htmlFor="confirmPasswordLable" className={`w-fit text-xs ${confirmNewPassError ? 'text-error-color' : 'text-[#0a856d]'} pl-4 ${confirmNewPasswordFocus || confirmNewPassword.length > 0 ? 'block' : 'hidden'}`}>CONFIRM NEW PASSWORD</label>
+                    <div className='relative flex flex-col w-full lg:w-1/2 justify-center align-center'>
+                        <label htmlFor="confirmPasswordLable" className={`absolute top-[-50%] w-fit text-xs ${confirmNewPassError ? 'text-error-color' : 'text-[#0a856d]'} pl-4 ${confirmNewPasswordFocus || confirmNewPassword.length > 0 ? 'block' : 'hidden'}`}>CONFIRM NEW PASSWORD</label>
                         <div className='flex items-center' onFocus={() => setConfirmNewPasswordFocus(true)} onBlur={() => setConfirmNewPasswordFocus(false)}>
                             <input
                                 type={showConfirmNewPassword ? 'text' : 'password'}

@@ -40,10 +40,10 @@ export const Login = () => {
   return (
     <div>
       <Navbar headtext={'Login'} headtextSize={'4xl'} paraText={'Sign in to continue'} />
-      <form autoComplete='off' className='mt-[7vh] w-[70vw] mx-auto' onSubmit={handleSubmit}>
+      <form autoComplete='off' className='mt-[7vh] w-[70vw] mx-auto mt-[20vh]' onSubmit={handleSubmit}>
         <div className='flex flex-col items-center gap-y-10'>
-          <div className='flex flex-col w-full lg:w-1/2 justify-center align-center gap-y-2'>
-            <label htmlFor="usernameLable" className={`w-fit text-xs ${userNameError?'text-error-color':'text-[#0a856d]'} pl-4 ${usernameFocus || username.length > 0 ? 'block' : 'hidden'}`}>USERNAME</label>
+          <div className='relative flex flex-col w-full lg:w-1/2 justify-center align-center gap-y-2'>
+            <label htmlFor="usernameLable" className={`absolute top-[-50%] w-fit text-xs ${userNameError?'text-error-color':'text-[#0a856d]'} pl-4 ${usernameFocus || username.length > 0 ? 'block' : 'hidden'}`}>USERNAME</label>
             <input
               type='text'
               required
@@ -58,8 +58,8 @@ export const Login = () => {
             />
             <p className='text-red text-left text-error-color text-sm'>{userNameError ? 'USERNAME must contain combination of alphanumeric values with special characters only' : ''}</p>
           </div>
-          <div className='flex flex-col w-full lg:w-1/2 justify-center align-center'>
-            <label htmlFor="passwordLable" className={`w-fit text-xs text-[#0a856d] pl-4 ${passwordFocus || password.length > 0 ? 'block' : 'hidden'}`}>PASSWORD</label>
+          <div className='relative flex flex-col w-full lg:w-1/2 justify-center align-center'>
+            <label htmlFor="passwordLable" className={`absolute top-[-50%] w-fit text-xs text-[#0a856d] pl-4 ${passwordFocus || password.length > 0 ? 'block' : 'hidden'}`}>PASSWORD</label>
             <div className='flex items-center' onFocus={()=>setPasswordFocus(true)} onBlur={()=>setPasswordFocus(false)}>
               <input
                 type={showPassword ? 'text' : 'password'}
