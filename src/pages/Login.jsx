@@ -19,7 +19,6 @@ export const Login = () => {
   const usernameAndPasswordMatchingError = (((password && username) && (username === password)) ? true : false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-  console.log('userNameError',userNameError)
 
   const handleSubmit = (e) => {
     e.preventDefault();

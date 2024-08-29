@@ -18,7 +18,7 @@ export const Signup = () => {
     const [email, setEmail] = useState('');
     const [emailFocus, setEmailFocus] = useState(false);
 
-    const [phoneNumber, setPhoneNumber] = useState('91');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [phoneNumberFocus, setPhoneNumberFocus] = useState(false);
 
     const [newPassword, setNewPassword] = useState('');
@@ -44,7 +44,7 @@ export const Signup = () => {
     const [checkPhoneNumber, setCheckPhoneNumber] = useState(true);
     const [checkEmail, setCheckEmail] = useState(true);
     const [newPasswordError, setNewPasswordError] = useState('');
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         let isErrorOccured = false;
@@ -56,7 +56,7 @@ export const Signup = () => {
             setCheckEmail(false);
         } else setCheckEmail(true);
 
-        if (!(phoneNumber.length > 11)) {
+        if (!(phoneNumber.length>9)) {
             isErrorOccured = true;
             setCheckPhoneNumber(false);
         } else setCheckPhoneNumber(true);
@@ -132,6 +132,8 @@ export const Signup = () => {
                     </div>
                     <div className='flex flex-col w-full lg:w-1/2 justify-center align-center gap-y-2'>
                         <label htmlFor="phoneNumberLable" className={`w-fit text-xs ${!checkPhoneNumber ? 'text-error-color' : 'text-[#0a856d]'} pl-4 ${phoneNumberFocus || phoneNumber.length > 0 ? 'block' : 'hidden'}`}>PHONE NO.</label>
+                        <div className={'flex items-center'}>
+                        <span className={`${phoneNumberFocus || phoneNumber.length > 0 ? 'block' : 'hidden'}`}>+91</span>
                         <input
                             type='number'
                             required
@@ -144,6 +146,7 @@ export const Signup = () => {
                             onFocus={() => setPhoneNumberFocus(true)}
                             onBlur={() => setPhoneNumberFocus(false)}
                         />
+                        </div>
                         <p className='text-red text-left text-error-color text-sm'>{!checkPhoneNumber ? 'Your PHONE NO. is invalid, it must greater than 9 numbers' : ''}</p>
                     </div>
                 </div>
