@@ -12,7 +12,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+input[type=password]::-ms-reveal,
+input[type=password]::-ms-clear {
+  display: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.text-error-color{
+  color: #d32f2f;
 }
