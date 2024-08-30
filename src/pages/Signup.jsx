@@ -191,7 +191,7 @@ export const Signup = () => {
                         <p className={`text-red text-left text-error-color text-sm pl-4 ${confirmNewPassError ? 'visible' : 'invisible'} h-10`}>CONFIRM PASSWORD must be same as PASSWORD</p>
                     </div>
                 </div>
-                <button type='submit' className='bg-[#0a856d] text-white px-20 py-2 rounded-xl mt-10 float-right'>SIGN UP</button>
+                <button type='submit' className='bg-[#0a856d] text-white h-10 w-56 py-2 rounded-lg float-right'>SIGN UP</button>
             </form>
         </div>
     )
