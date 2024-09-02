@@ -12,3 +12,14 @@ export const handleCheckNewPassword=(username,newPassword)=>{
         } else return 'PASSWORD must contain combination of alphanumeric values with special characters only';
     }
 }
+
+const ALPHA_NUM_CHAR_REGEX = /^[a-zA-Z0-9!@#$%&()*\\-`.+,"]*$/;
+const ALPHA = /^[a-zA-Z ]*$/;
+
+export const handleKeyDown = (event) => {
+    if (event.target.name === 'name') {
+        let n=event.target.value.length,value=event.target.value;
+        let lastS=value[n-1];
+        if (!ALPHA.test(event.key) || (lastS===' ' && event.key===' ') || (n<1 && event.key===' ')) event.preventDefault();
+    } else if (!ALPHA_NUM_CHAR_REGEX.test(event.key)) event.preventDefault();
+}

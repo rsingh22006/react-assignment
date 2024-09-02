@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
-import { containsAlphabetsNumbersAndSpecialChars, handleCheckNewPassword } from '../utilites';
+import { containsAlphabetsNumbersAndSpecialChars, handleCheckNewPassword, handleKeyDown } from '../utilites';
 import { AuthButton } from '../components/AuthButton';
 import { NormalInput } from '../components/NormalInput';
 import { PasswordInput } from '../components/PasswordInput';
+import { InputContainer } from '../components/InputContainer';
 
 export const Signup = () => {
+    const navigate = useNavigate();
     const initFormData = { name: '', username: '', email: '', phoneNumber: '', newPassword: '', confirmNewPassword: '' };
     const initFocusData = { name: false, username: false, email: false, phoneNumber: false, newPassword: false, confirmNewPassword: false };
 
@@ -20,11 +22,10 @@ export const Signup = () => {
     const checkPhoneNumber = formData.phoneNumber.length > 9;
     const checkEmail = formData.email.includes('@' && '.com');
     const checkNewPassword = handleCheckNewPassword(formData.username, formData.newPassword);
-    const checkConfirmNewPassword = (((formData.newPassword && formData.confirmNewPassword) && (formData.newPassword !== formData.confirmNewPassword)) ? true : false);
-
-    const ALPHA_NUM_CHAR_REGEX = /^[a-zA-Z0-9!@#$%&()*\\-`.+,/\"]*$/;
-    const ALPHA = /^[a-zA-Z]*$/;
-    const navigate = useNavigate();
+    const checkConfirmNewPassword = ((
+        (formData.newPassword && formData.confirmNewPassword) &&
+        (formData.newPassword !== formData.confirmNewPassword)
+    ) ? true : false);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -38,12 +39,6 @@ export const Signup = () => {
     const handleClickShowNewPassword = () => setShowNewPassword((show) => !show);
 
     const handleClickShowConfirmNewPassword = () => setShowConfirmNewPassword((show) => !show);
-
-    const handleKeyDown = (event) => {
-        if (event.target.name === 'name') {
-            if (!ALPHA.test(event.key)) event.preventDefault();
-        } else if (!ALPHA_NUM_CHAR_REGEX.test(event.key)) event.preventDefault();
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -62,7 +57,7 @@ export const Signup = () => {
         <div>
             <Navbar headtext={'Create new Account'} />
             <form autoComplete='off' className='mt-[7vh] w-[70vw] mx-auto' onSubmit={handleSubmit}>
-                <div className='mb-[6vh] flex justify-between flex-col lg:flex-row gap-10'>
+                <InputContainer>
                     <NormalInput
                         name='name'
                         type={'text'}
@@ -85,8 +80,8 @@ export const Signup = () => {
                         handleChange={handleChange}
                         handleChangeFocusAndBlur={handleChangeFocusAndBlur}
                     />
-                </div>
-                <div className='mb-[6vh] flex justify-between flex-col lg:flex-row gap-10'>
+                </InputContainer>
+                <InputContainer>
                     <NormalInput
                         name='email'
                         type={'text'}
@@ -95,7 +90,6 @@ export const Signup = () => {
                         focus={focusData.email}
                         errorDetail='Your EMAIL is invalid'
                         error={!checkEmail && formData.email.length > 0}
-                        handleKeyDown={handleKeyDown}
                         handleChange={handleChange}
                         handleChangeFocusAndBlur={handleChangeFocusAndBlur}
                     />
@@ -107,12 +101,11 @@ export const Signup = () => {
                         focus={focusData.phoneNumber}
                         errorDetail='Your PHONE NO. is invalid, it must greater than 9 numbers'
                         error={!checkPhoneNumber && formData.phoneNumber.length > 0}
-                        handleKeyDown={handleKeyDown}
                         handleChange={handleChange}
                         handleChangeFocusAndBlur={handleChangeFocusAndBlur}
                     />
-                </div>
-                <div className='mb-[6vh] flex justify-between flex-col lg:flex-row gap-10'>
+                </InputContainer>
+                <InputContainer>
                     <PasswordInput
                         show={showNewPassword}
                         name='newPassword'
@@ -132,12 +125,11 @@ export const Signup = () => {
                         labelValue='NEW PASSWORD'
                         error={checkConfirmNewPassword && formData.confirmNewPassword.length > 0}
                         errorDetail='CONFIRM PASSWORD must be same as PASSWORD'
-                        handleKeyDown={handleKeyDown}
                         handleChange={handleChange}
                         handleChangeFocusAndBlur={handleChangeFocusAndBlur}
                         handleClickShow={handleClickShowConfirmNewPassword}
                     />
-                </div>
+                </InputContainer>
                 <AuthButton text='SIGN UP' floatRight={'float-right'} />
             </form>
         </div>
