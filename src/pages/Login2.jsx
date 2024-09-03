@@ -14,8 +14,8 @@ export const Login2 = () => {
     <div>
         <h1>Login 2</h1>
         <div className='flex flex-col'>
-        <input className='border-solid bg-[red]' type="text" name='username' onChange={handleChange}/>
-        <input className='border-solid bg-[red]' type="password" name="password" onChange={handleChange}/>
+        <input className='border-solid' type="text" name='username' onChange={handleChange}/>
+        <input className='border-solid' type="password" name="password" onChange={handleChange}/>
         </div>
     </div>
   )

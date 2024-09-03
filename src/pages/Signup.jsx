@@ -72,6 +72,7 @@ export const Signup = () => {
                 </div>
                 <AuthButton text='SIGN UP' floatRight={'float-right'} />
             </form>
+            <input type="text" />
         </div>
     )
 }

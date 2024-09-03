@@ -56,7 +56,7 @@ export const Login = () => {
           />
         )}
         <AuthButton text='LOGIN' isDisabled={usernameAndPasswordMatchingError || !checkUsername} w={'w-40'} />
-        <p className='mt-[-3vh]'>Don't have account? <Link className='underline' to='/signup'>SignUp</Link></p>
+        <p className='mt-[-3vh] text-center'>Don't have account? <Link className='underline' to='/signup'>SignUp</Link></p>
       </form>
     </div>
   )
