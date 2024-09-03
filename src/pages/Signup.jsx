@@ -29,7 +29,6 @@ export const Signup = () => {
         const updatedObj = { ...showPassword, [name]: !showPassword[name] };
         setShowPassword(updatedObj)
     };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         let isErrorOccured = false;

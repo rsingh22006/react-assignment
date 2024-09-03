@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { Navbar } from '../components/Navbar';
 import { containsAlphabetsNumbersAndSpecialChars, getInputLoginData } from '../utilites';
@@ -6,14 +6,10 @@ import { AuthButton } from '../components/AuthButton';
 import { InputField } from '../components/InputField';
 
 export const Login = () => {
-  const formDataRef = useRef({username:'',password:''});
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [focusData, setFocusData] = useState({ username: false, password: false });
   const [showPassword, setShowPassword] = useState(false);
   const checkUsername = containsAlphabetsNumbersAndSpecialChars(formData.username);
-  const checkUsernameRef = containsAlphabetsNumbersAndSpecialChars(formDataRef.username);
-  console.log('checkUsername',checkUsername)
-  console.log('checkUsernameRef',checkUsernameRef)
   const usernameAndPasswordMatchingError = ((
     (formData.password && formData.username) && (formData.username === formData.password)
   ) ? true : false);
@@ -21,15 +17,12 @@ export const Login = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
-    formDataRef.current={...formDataRef.current,[name]:value};
   }
-
   const handleChangeFocusAndBlur = (event, type) => {
     setFocusData({ ...focusData, [event.target.name]: type === 'focus' ? true : false })
   }
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (checkUsername) {
@@ -40,6 +33,7 @@ export const Login = () => {
 
   const inputData = getInputLoginData(formData, focusData, showPassword, checkUsername, usernameAndPasswordMatchingError,
     handleChange, handleChangeFocusAndBlur, handleClickShowPassword)
+
   return (
     <div>
       <Navbar headtext={'Login'} headtextSize={'4xl'} paraText={'Sign in to continue'} />

@@ -1,7 +1,6 @@
 import { Signup } from './pages/Signup';
 import { Login } from './pages/Login';
 import { Route, Routes } from 'react-router-dom';
-// import { Login2 } from './pages/Login2';
 
 function App() {
   return (
