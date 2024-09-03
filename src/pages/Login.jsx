@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { Navbar } from '../components/Navbar';
-import { containsAlphabetsNumbersAndSpecialChars, handleKeyDown } from '../utilites';
+import { containsAlphabetsNumbersAndSpecialChars, getInputLoginData } from '../utilites';
 import { AuthButton } from '../components/AuthButton';
 import { InputField } from '../components/InputField';
 
@@ -13,7 +13,6 @@ export const Login = () => {
   const usernameAndPasswordMatchingError = ((
     (formData.password && formData.username) && (formData.username === formData.password)
   ) ? true : false);
-
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -34,38 +33,13 @@ export const Login = () => {
     }
   }
 
-  const inputData = [
-    {
-      name: 'username',
-      value: formData.username,
-      labelValue: 'USERNAME',
-      focus: focusData.username,
-      error: !checkUsername && formData.username.length > 0,
-      errorDetail: 'USERNAME must contain combination of alphanumeric values with special characters only',
-      handleKeyDown,
-      handleChange,
-      handleChangeFocusAndBlur
-    },
-    {
-      name: 'password',
-      show:showPassword,
-      value: formData.password,
-      labelValue: 'PASSWORD',
-      focus: focusData.password,
-      error: usernameAndPasswordMatchingError,
-      errorDetail: 'USERNAME and PASSWORD should not be same',
-      handleKeyDown,
-      handleChange,
-      handleChangeFocusAndBlur,
-      handleClickShow:handleClickShowPassword
-    }
-  ]
-
+  const inputData = getInputLoginData(formData, focusData, showPassword, checkUsername, usernameAndPasswordMatchingError,
+    handleChange, handleChangeFocusAndBlur, handleClickShowPassword)
   return (
     <div>
       <Navbar headtext={'Login'} headtextSize={'4xl'} paraText={'Sign in to continue'} />
-      <form autoComplete='off' className='w-1/2 lg:w-[40vw] mx-auto mt-[7vh] lg:mt-[18vh]' onSubmit={handleSubmit}>
-        {inputData.map((el,idx) =>
+      <form autoComplete='off' className='w-1/2 lg:w-[40vw] mx-auto mt-[7vh] lg:mt-[18vh] flex flex-col gap-10' onSubmit={handleSubmit}>
+        {inputData.map((el, idx) =>
           <InputField
             key={idx}
             name={el.name}
@@ -82,7 +56,7 @@ export const Login = () => {
           />
         )}
         <AuthButton text='LOGIN' isDisabled={usernameAndPasswordMatchingError || !checkUsername} w={'w-40'} />
-        <p className='mt-[2vh]'>Don't have account? <Link className='underline' to='/signup'>SignUp</Link></p>
+        <p className='mt-[-3vh]'>Don't have account? <Link className='underline' to='/signup'>SignUp</Link></p>
       </form>
     </div>
   )
