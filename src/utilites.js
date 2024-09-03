@@ -1,7 +1,11 @@
+const ALPHA_NUM_CHAR_REGEX = /^[a-zA-Z0-9!@#$%&()*\\-`.+,"]*$/;
+const ALPHA = /^[a-zA-Z ]*$/;
+export const initFormData = { name: '', username: '', email: '', phoneNumber: '', newPassword: '', confirmNewPassword: '' };
+export const initFocusData = { name: false, username: false, email: false, phoneNumber: false, newPassword: false, confirmNewPassword: false };
+
 export const containsAlphabetsNumbersAndSpecialChars=(str)=>{
     return (/[A-Za-z]/.test(str) && /[0-9]/.test(str) && /[!@#$%^&*(),.?":{}|<>]/.test(str));
 }
-
 export const handleCheckNewPassword=(username,newPassword)=>{
     let check = containsAlphabetsNumbersAndSpecialChars(newPassword);
     if (!check || username === newPassword) {
@@ -12,9 +16,6 @@ export const handleCheckNewPassword=(username,newPassword)=>{
         } else return 'PASSWORD must contain combination of alphanumeric values with special characters only';
     }
 }
-
-const ALPHA_NUM_CHAR_REGEX = /^[a-zA-Z0-9!@#$%&()*\\-`.+,"]*$/;
-const ALPHA = /^[a-zA-Z ]*$/;
 
 export const handleKeyDown = (event) => {
     if (event.target.name === 'name') {
