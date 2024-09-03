@@ -24,8 +24,8 @@ export const handleKeyDown = (event) => {
     }else if (!ALPHA_NUM_CHAR_REGEX.test(event.key)) event.preventDefault();
 }
 export const getInputSingupData = (
-    formData, focusData, showNewPassword, showConfirmNewPassword, checkUsername, checkNewPassword, checkConfirmNewPassword,
-    handleChange, handleChangeFocusAndBlur, handleClickShowNewPassword, handleClickShowConfirmNewPassword) => {
+    formData, focusData, showPassword, checkUsername, checkNewPassword, checkConfirmNewPassword,
+    handleChange, handleChangeFocusAndBlur,handleClickShow) => {
     const checkEmail = formData.email.includes('@' && '.com');
     const checkPhoneNumber = formData.phoneNumber.length > 9 && formData.phoneNumber.length <=10;
     return [
@@ -74,35 +74,35 @@ export const getInputSingupData = (
         },
         {
             name: 'newPassword',
-            show: showNewPassword,
+            show: showPassword.newPassword,
             value: formData.newPassword,
             labelValue: 'NEW PASSWORD',
             focus: focusData.newPassword,
             error: checkNewPassword && formData.newPassword.length > 0,
             errorDetail: checkNewPassword,
-            handleClickShow: handleClickShowNewPassword,
             handleKeyDown,
             handleChange,
-            handleChangeFocusAndBlur
+            handleChangeFocusAndBlur,
+            handleClickShow,
         },
         {
             name: 'confirmNewPassword',
-            show: showConfirmNewPassword,
+            show: showPassword.confirmNewPassword,
             value: formData.confirmNewPassword,
             labelValue: 'CONFIRM NEW PASSWORD',
             focus: focusData.confirmNewPassword,
             error: checkConfirmNewPassword && formData.confirmNewPassword.length > 0,
             errorDetail: 'CONFIRM PASSWORD must be same as NEW PASSWORD',
-            handleClickShow: handleClickShowConfirmNewPassword,
             handleKeyDown,
             handleChange,
-            handleChangeFocusAndBlur
+            handleChangeFocusAndBlur,
+            handleClickShow,
         }
     ]
 }
 
 export const getInputLoginData = (formData, focusData, showPassword, checkUsername, usernameAndPasswordMatchingError,
-    handleChange, handleChangeFocusAndBlur, handleClickShowPassword) => {
+    handleChange, handleChangeFocusAndBlur, handleClickShow) => {
     return [
         {
             name: 'username',
@@ -126,7 +126,7 @@ export const getInputLoginData = (formData, focusData, showPassword, checkUserna
             handleKeyDown,
             handleChange,
             handleChangeFocusAndBlur,
-            handleClickShow: handleClickShowPassword
+            handleClickShow: handleClickShow
         }
     ]
 }

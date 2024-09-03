@@ -18,7 +18,7 @@ export const InputField = ({ name, type = 'text', value, labelValue, focus, show
                     onFocus={(e) => handleChangeFocusAndBlur(e, 'focus')}
                     onBlur={(e) => handleChangeFocusAndBlur(e, 'blur')}
                 />
-                {((name.toLocaleLowerCase()).includes('password') && value.length>0) && <button type='button' onClick={handleClickShow} className='ml-[-7%] text-gray-400'>{show ? <VisibilityOff /> : <Visibility />}</button>}
+                {((name.toLocaleLowerCase()).includes('password') && value.length>0) && <button type='button' onClick={()=>handleClickShow(name)} className='ml-[-7%] text-gray-400'>{show ? <VisibilityOff /> : <Visibility />}</button>}
             </div>
             <p className={`text-red text-left text-error-color text-sm pl-4 ${error ? 'visible' : 'invisible'} h-10`}>{errorDetail}</p>
         </div>

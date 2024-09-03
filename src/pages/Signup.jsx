@@ -9,8 +9,7 @@ export const Signup = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState(initFormData);
     const [focusData, setFocusData] = useState(initFocusData);
-    const [showNewPassword, setShowNewPassword] = useState(false);
-    const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState({ newPassword: false, confirmNewPassword: false });
     const checkUsername = containsAlphabetsNumbersAndSpecialChars(formData.username);
     const checkNewPassword = handleCheckNewPassword(formData.username, formData.newPassword);
     const checkConfirmNewPassword = ((
@@ -26,8 +25,10 @@ export const Signup = () => {
         setFocusData({ ...focusData, [event.target.name]: type === 'focus' ? true : false })
     }
 
-    const handleClickShowNewPassword = () => setShowNewPassword((show) => !show);
-    const handleClickShowConfirmNewPassword = () => setShowConfirmNewPassword((show) => !show);
+    const handleClickShow = (name) => {
+        const updatedObj = { ...showPassword, [name]: !showPassword[name] };
+        setShowPassword(updatedObj)
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -43,10 +44,10 @@ export const Signup = () => {
     }
 
     const inputData = getInputSingupData(
-        formData, focusData, showNewPassword, showConfirmNewPassword, checkUsername, checkNewPassword, checkConfirmNewPassword,
-        handleChange, handleChangeFocusAndBlur, handleClickShowNewPassword, handleClickShowConfirmNewPassword
+        formData, focusData, showPassword, checkUsername, checkNewPassword, checkConfirmNewPassword,
+        handleChange, handleChangeFocusAndBlur, handleClickShow
     );
-    
+
     return (
         <div>
             <Navbar headtext={'Create new Account'} />
