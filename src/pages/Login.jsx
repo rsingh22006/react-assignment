@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { Navbar } from '../components/Navbar';
-import { containsAlphabetsNumbersAndSpecialChars, getInputLoginData } from '../utilites';
+import { getInputLoginData, handleCheckNewPassword, handleCheckUsername } from '../utilites';
 import { AuthButton } from '../components/AuthButton';
 import { InputField } from '../components/InputField';
 
@@ -9,10 +9,8 @@ export const Login = () => {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [focusData, setFocusData] = useState({ username: false, password: false });
   const [showPassword, setShowPassword] = useState(false);
-  const checkUsername = containsAlphabetsNumbersAndSpecialChars(formData.username);
-  const usernameAndPasswordMatchingError = ((
-    (formData.password && formData.username) && (formData.username === formData.password)
-  ) ? true : false);
+  const checkUsername = handleCheckUsername(formData.username);
+  const checkPassword = handleCheckNewPassword(formData.username, formData.password);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -21,19 +19,19 @@ export const Login = () => {
   const handleChangeFocusAndBlur = (event, type) => {
     setFocusData({ ...focusData, [event.target.name]: type === 'focus' ? true : false })
   }
-
   const handleClickShowPassword = () => setShowPassword((show) => !show);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (checkUsername) {
-      setFormData({ username: '', password: '' });
-      return alert('Your details has been verified, Thanks!');
-    }
+    let isErrorOccured = false;
+    if (!checkUsername || checkPassword) isErrorOccured = true;
+    if (isErrorOccured) return;
+    alert('You have signed up, Redirecting to Login Thanks!');
+    setFormData({ username: '', password: '' });
+    return alert('Your details has been verified, Thanks!');
   }
 
-  const inputData = getInputLoginData(formData, focusData, showPassword, checkUsername, usernameAndPasswordMatchingError,
-    handleChange, handleChangeFocusAndBlur, handleClickShowPassword)
-
+  const inputData = getInputLoginData(formData, focusData, showPassword, checkUsername, checkPassword,
+    handleChange, handleChangeFocusAndBlur, handleClickShowPassword);
   return (
     <div>
       <Navbar headtext={'Login'} headtextSize={'4xl'} paraText={'Sign in to continue'} />
@@ -54,7 +52,7 @@ export const Login = () => {
             handleClickShow={el?.handleClickShow}
           />
         )}
-        <AuthButton text='LOGIN' isDisabled={usernameAndPasswordMatchingError || !checkUsername} w={'w-40'} />
+        <AuthButton text='LOGIN' w={'w-40'} />
         <p className='mt-[-3vh] text-center'>Don't have account? <Link className='underline' to='/signup'>SignUp</Link></p>
       </form>
     </div>

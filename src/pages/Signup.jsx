@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
-import { containsAlphabetsNumbersAndSpecialChars, getInputSingupData, handleCheckNewPassword, initFocusData, initFormData } from '../utilites';
+import { getInputSingupData, handleCheckConfirmNewPassword, handleCheckEmail, handleCheckNewPassword, handleCheckUsername, initFocusData, initFormData } from '../utilites';
 import { AuthButton } from '../components/AuthButton';
 import { InputField } from '../components/InputField';
 
-export const Signup = () => {
+export const Signup = (props) => {
+    console.log('props',props);
     const navigate = useNavigate();
     const [formData, setFormData] = useState(initFormData);
     const [focusData, setFocusData] = useState(initFocusData);
     const [showPassword, setShowPassword] = useState({ newPassword: false, confirmNewPassword: false });
-    const checkUsername = containsAlphabetsNumbersAndSpecialChars(formData.username);
+    const checkUsername = handleCheckUsername(formData.username)
     const checkNewPassword = handleCheckNewPassword(formData.username, formData.newPassword);
-    const checkConfirmNewPassword = ((
-        (formData.newPassword && formData.confirmNewPassword) &&
-        (formData.newPassword !== formData.confirmNewPassword)
-    ) ? true : false);
+    const checkConfirmNewPassword = handleCheckConfirmNewPassword(formData.newPassword, formData.confirmNewPassword)
+    const checkEmail = handleCheckEmail(formData.email)
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -24,7 +23,6 @@ export const Signup = () => {
     const handleChangeFocusAndBlur = (event, type) => {
         setFocusData({ ...focusData, [event.target.name]: type === 'focus' ? true : false })
     }
-
     const handleClickShow = (name) => {
         const updatedObj = { ...showPassword, [name]: !showPassword[name] };
         setShowPassword(updatedObj)
@@ -32,21 +30,17 @@ export const Signup = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         let isErrorOccured = false;
-
-        if (!checkUsername || !formData.email.includes('@' && '.com') || !(formData.phoneNumber.length > 9) || checkNewPassword || checkConfirmNewPassword) isErrorOccured = true;
-
+        if (!checkUsername || checkEmail || !(formData.phoneNumber.length > 9) || checkNewPassword || checkConfirmNewPassword) isErrorOccured = true;
         if (isErrorOccured) return;
-
         alert('You have signed up, Redirecting to Login Thanks!');
         setFormData(initFormData);
         return navigate('/login');
     }
 
     const inputData = getInputSingupData(
-        formData, focusData, showPassword, checkUsername, checkNewPassword, checkConfirmNewPassword,
+        formData, focusData, showPassword, checkUsername, checkEmail, checkNewPassword, checkConfirmNewPassword,
         handleChange, handleChangeFocusAndBlur, handleClickShow
     );
-
     return (
         <div>
             <Navbar headtext={'Create new Account'} />
