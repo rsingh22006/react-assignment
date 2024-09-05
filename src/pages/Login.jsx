@@ -1,41 +1,27 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { Navbar } from '../components/Navbar';
-import { getInputLoginData, handleCheckNewPassword, handleCheckUsername } from '../utilites';
 import { AuthButton } from '../components/AuthButton';
 import { InputField } from '../components/InputField';
+import { getInputLoginData } from '../utils/authInputData';
+import { handleCheckNewPassword, handleCheckUsername } from '../utils/validationLogic';
+import { useShowPassword } from '../customHooks/useShowPassword';
+import { useFormData } from '../customHooks/useFormData';
+import { useFocusAndBlur } from '../customHooks/useFocusAndBlur';
 
 export const Login = () => {
-  const [formData, setFormData] = useState({ username: '', password: '' });
-  const [focusData, setFocusData] = useState({ username: false, password: false });
-  const [showPassword, setShowPassword] = useState(false);
+  const {formData,handleChange,handleSubmit} = useFormData('login',{username:'',password:''});
   const checkUsername = handleCheckUsername(formData.username);
   const checkPassword = handleCheckNewPassword(formData.username, formData.password);
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  }
-  const handleChangeFocusAndBlur = (event, type) => {
-    setFocusData({ ...focusData, [event.target.name]: type === 'focus' ? true : false })
-  }
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    let isErrorOccured = false;
-    if (!checkUsername || checkPassword) isErrorOccured = true;
-    if (isErrorOccured) return;
-    alert('You have signed up, Redirecting to Login Thanks!');
-    setFormData({ username: '', password: '' });
-    return alert('Your details has been verified, Thanks!');
-  }
-
-  const inputData = getInputLoginData(formData, focusData, showPassword, checkUsername, checkPassword,
-    handleChange, handleChangeFocusAndBlur, handleClickShowPassword);
+  const {showPassword,handleClickShow}=useShowPassword('login');
+  const {focusData,handleChangeFocusAndBlur}= useFocusAndBlur({username:false,password:false});
+  const inputData = getInputLoginData(
+    formData, focusData, showPassword, checkUsername, checkPassword,
+    handleChange, handleChangeFocusAndBlur, handleClickShow
+  );
   return (
     <div>
       <Navbar headtext={'Login'} headtextSize={'4xl'} paraText={'Sign in to continue'} />
-      <form autoComplete='off' className='w-1/2 lg:w-[40vw] mx-auto mt-[7vh] lg:mt-[18vh] flex flex-col gap-10' onSubmit={handleSubmit}>
+      <form autoComplete='off' className='w-1/2 lg:w-[40vw] mx-auto mt-[7vh] lg:mt-[18vh] flex flex-col gap-10' onSubmit={e=>handleSubmit(e,checkUsername,checkPassword)}>
         {inputData.map((el, idx) =>
           <InputField
             key={idx}

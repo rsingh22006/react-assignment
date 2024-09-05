@@ -1,57 +1,14 @@
-const ALPHA_NUM_CHAR_REGEX = /^[a-zA-Z0-9!@#$%&()*\\-`.+,"]*$/;
-const ALPHA = /^[a-zA-Z ]*$/;
-const ALPA_NUM = /[a-zA-Z0-9]/;
-export const initFormData = { name: '', username: '', email: '', phoneNumber: '', newPassword: '', confirmNewPassword: '' };
-export const initFocusData = { name: false, username: false, email: false, phoneNumber: false, newPassword: false, confirmNewPassword: false };
-
-export const containsAlphabetsNumbersAndSpecialChars = (str) => {
-    return (/[A-Za-z]/.test(str) && /[0-9]/.test(str) && /[!@#$%^&*(),.?":{}|<>]/.test(str));
-}
-export const handleCheckUsername = (username) => {
-    const checkANS = containsAlphabetsNumbersAndSpecialChars(username);
-    const checkFirstChar = /[A-Za-z]/.test(username[0]);
-    if (username.length > 0 && !checkFirstChar) {
-        return 'USERNAME must contain first alphabetic character';
-    } else if (username.length > 0 && !checkANS) {
-        return 'USERNAME must contain combination of alphanumeric values with special characters only';
-    }
-}
-export const handleCheckEmail = (email) => {
-    const isFirstCharRight = ALPA_NUM.test(email[0]);
-    if(email.length>0){
-        if(!isFirstCharRight)return 'Your EMAIL first word should be a-z or 0-9';
-        else if(!validateEmail())return 'Your EMAIL is invalid';
-    }
-
-    function validateEmail() {
-        let re = /^[a-zA-Z0-9]+@gmail|@yahoo|@outlook\.com$/;
-        return ((isFirstCharRight && re.test(email) && email.includes('.com')));
-    }
-}
-export const handleCheckNewPassword = (username, newPassword) => {
-    let check = containsAlphabetsNumbersAndSpecialChars(newPassword);
-    if ((!check || username === newPassword) && newPassword.length > 0) {
-        if (username === newPassword && !check) {
-            return 'USERNAME and PASSWORD should not be same, PASSWORD must contain combination of alphanumeric values with special characters only';
-        } else if (username === newPassword) {
-            return 'USERNAME and PASSWORD should not be same';
-        } else return 'PASSWORD must contain combination of alphanumeric values with special characters only';
-    }
-}
-export const handleCheckConfirmNewPassword = (newPassword, confirmNewPassword) => {
-    if ((newPassword && confirmNewPassword) && (newPassword !== confirmNewPassword) && confirmNewPassword.length > 0) {
-        return 'CONFIRM PASSWORD must be same as NEW PASSWORD';
-    }
-}
 export const handleKeyDown = (event) => {
+    const ALPHA = /^[a-zA-Z ]*$/;
+    const ALPHA_NUM_CHAR_REGEX = /^[a-zA-Z0-9!@#$%&()*\\-`.+,"]*$/;
     if (event.target.name === 'name') {
         let n = event.target.value.length, value = event.target.value;
         let lastS = value[n - 1];
         if (!ALPHA.test(event.key) || (lastS === ' ' && event.key === ' ') || (n < 1 && event.key === ' ')) event.preventDefault();
     } else if (!ALPHA_NUM_CHAR_REGEX.test(event.key)) event.preventDefault();
 }
-export const getInputSingupData = (
-    formData, focusData, showPassword, checkUsername,checkEmail, checkNewPassword, checkConfirmNewPassword,
+export const getInputSignupData = (
+    formData, focusData, showPassword, checkUsername, checkEmail, checkNewPassword, checkConfirmNewPassword,
     handleChange, handleChangeFocusAndBlur, handleClickShow) => {
     const checkPhoneNumber = formData.phoneNumber.length > 9 && formData.phoneNumber.length <= 10;
     return [
@@ -126,7 +83,6 @@ export const getInputSingupData = (
         }
     ]
 }
-
 export const getInputLoginData = (formData, focusData, showPassword, checkUsername, checkPassword,
     handleChange, handleChangeFocusAndBlur, handleClickShow) => {
     return [
@@ -152,7 +108,7 @@ export const getInputLoginData = (formData, focusData, showPassword, checkUserna
             handleKeyDown,
             handleChange,
             handleChangeFocusAndBlur,
-            handleClickShow: handleClickShow
+            handleClickShow
         }
     ]
 }
