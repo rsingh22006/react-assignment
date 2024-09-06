@@ -4,11 +4,14 @@ export const handleKeyDown = (event) => {
     if (event.target.name === 'name') {
         let n = event.target.value.length, value = event.target.value;
         let lastS = value[n - 1];
+        console.log('key',event.key)
+        console.log("1 ALPHA.test(event.key)",ALPHA.test(event.key));
+        console.log("2 (lastS === ' ' && event.key === ' ')",(lastS === ' ' && event.key === ' '));
+        console.log("3 (n < 1 && event.key === ' ')",(n < 1 && event.key === ' '))
         if (!ALPHA.test(event.key) || (lastS === ' ' && event.key === ' ') || (n < 1 && event.key === ' ')) event.preventDefault();
     } else if (!ALPHA_NUM_CHAR_REGEX.test(event.key)) event.preventDefault();
 }
-export const getInputSignupData = (
-    formData, focusData, showPassword, checkUsername, checkEmail, checkNewPassword, checkConfirmNewPassword,
+export const getInputSignupData = (formData, focusData, showPassword, checkUsername, checkEmail, checkNewPassword, checkConfirmNewPassword,
     handleChange, handleChangeFocusAndBlur, handleClickShow) => {
     const checkPhoneNumber = formData.phoneNumber.length > 9 && formData.phoneNumber.length <= 10;
     return [

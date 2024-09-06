@@ -20,7 +20,7 @@ export const InputField = ({ name, type = 'text', value, labelValue, focus, show
                 />
                 {((name.toLocaleLowerCase()).includes('password') && value.length>0) && <button type='button' onClick={()=>handleClickShow(name)} className='ml-[-7%] text-gray-400'>{show ? <VisibilityOff /> : <Visibility />}</button>}
             </div>
-            <p className={`text-red text-left text-error-color text-sm pl-4 ${error ? 'visible' : 'invisible'} h-10`}>{errorDetail}</p>
+            <p className={`text-red text-left text-error-color text-xs sm:text-sm pl-4 ${error ? 'visible' : 'invisible'} h-10`}>{errorDetail}</p>
         </div>
     )
 }
