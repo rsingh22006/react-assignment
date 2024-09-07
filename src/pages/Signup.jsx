@@ -11,7 +11,6 @@ const initData = {
     formData: { name: '', username: '', email: '', phoneNumber: '', newPassword: '', confirmNewPassword: '' },
     focusData: { name: false, username: false, email: false, phoneNumber: false, newPassword: false, confirmNewPassword: false }
 }
-
 export const Signup = () => {
     const { formData, handleChange, handleSubmit } = useFormData('signup', initData.formData);
     const { showPassword, handleClickShow } = useShowPassword('signup');

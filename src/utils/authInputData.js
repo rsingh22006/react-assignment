@@ -10,9 +10,7 @@ export const handleKeyDown = (event) => {
     else if (!ALPHA_NUM_CHAR_REGEX.test(event.key)) event.preventDefault();
 }
 export const handlePaste = (event) => {
-    if (event.target.name === 'phoneNumber' && event.clipboardData.getData('text').includes('e')) {
-        event.preventDefault();
-    }
+    if (event.target.name==='phoneNumber' && event.clipboardData.getData('text').includes('e'))event.preventDefault();
 }
 export const getInputSignupData = (formData, focusData, showPassword, checkName, checkUsername, checkEmail, checkPhoneNumber, checkNewPassword, checkConfirmNewPassword,
     handleChange, handlePaste, handleChangeFocusAndBlur, handleClickShow) => {
