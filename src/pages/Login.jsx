@@ -31,7 +31,6 @@ export const Login = () => {
             labelValue={el.labelValue}
             focus={el.focus}
             error={el.error}
-            errorDetail={el.errorDetail}
             handleKeyDown={el.handleKeyDown}
             handleChange={el.handleChange}
             handleChangeFocusAndBlur={el.handleChangeFocusAndBlur}

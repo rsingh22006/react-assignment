@@ -34,7 +34,7 @@ export const handleCheckPhoneNumber = (phoneNumber) => {
     const ALPA_NUM = /^[0-9][^.]*$/;
     if (phoneNumber.length>0){
         if (!ALPA_NUM.test(phoneNumber)) return 'PHONE NO. is invalid, remove "." from it';
-        if (phoneNumber.length > 9 && phoneNumber.length <= 10) return 'Your PHONE NO. is invalid, it must include 10 numbers';
+        if (phoneNumber.length>10 || phoneNumber.length < 10) return 'Your PHONE NO. is invalid, it must include 10 numbers';
     }
 }
 export const handleCheckNewPassword = (username, password) => {

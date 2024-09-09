@@ -1,6 +1,6 @@
 import { VisibilityIcon } from './VisibilityIcon';
 
-export const InputField = ({ name, type = 'text', value, labelValue, focus, show, errorDetail, error, handleKeyDown, handleChange, handlePaste, handleChangeFocusAndBlur, handleClickShow }) => {
+export const InputField = ({ name, type = 'text', value, labelValue, focus, show, error, handleKeyDown, handleChange, handlePaste, handleChangeFocusAndBlur, handleClickShow }) => {
     return (
         <div className='relative flex flex-col w-full justify-center align-center gap-y-2 m-auto'>
             <label htmlFor={name} className={`absolute top-[-25%] w-fit text-xs pl-4 ${error ? 'text-error-color' : 'text-[#0a856d]'} ${focus || value.length > 0 ? 'block' : 'hidden'}`}>{labelValue}</label>
@@ -25,7 +25,7 @@ export const InputField = ({ name, type = 'text', value, labelValue, focus, show
                     </button>
                 }
             </div>
-            <p className={`text-red text-left text-error-color text-xs sm:text-sm pl-4 ${error ? 'visible' : 'invisible'} h-10`}>{errorDetail}</p>
+            <p className={`text-red text-left text-error-color text-xs sm:text-sm pl-4 ${error?'visible':'invisible'} h-10`}>{error}</p>
         </div>
     )
 }

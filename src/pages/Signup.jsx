@@ -40,7 +40,6 @@ export const Signup = () => {
                             labelValue={el.labelValue}
                             focus={el.focus}
                             error={el.error}
-                            errorDetail={el.errorDetail}
                             handleKeyDown={el.handleKeyDown}
                             handlePaste={el.handlePaste}
                             handleChange={el.handleChange}
