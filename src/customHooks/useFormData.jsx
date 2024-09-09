@@ -10,9 +10,7 @@ export const useFormData = (type, initData) => {
     }
     const handleSubmit = (e, checkUsername, checkPassword, checkConfirmPassword, checkEmail, checkPhoneNumber) => {
         e.preventDefault();
-        let isErrorOccured = false;
-        if (checkUsername || checkPassword || checkConfirmPassword || checkEmail || checkPhoneNumber) isErrorOccured = true;
-        if (isErrorOccured) return;
+        if (checkUsername || checkPassword || checkConfirmPassword || checkEmail || checkPhoneNumber)return;
         if (type === 'login') {
             setFormData(initData);
             return alert('Your details has been verified, Thanks!');
