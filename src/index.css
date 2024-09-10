@@ -29,3 +29,12 @@ code {
 .text-error-color{
   color: #d32f2f;
 }
+
+/* @layer pages{
+  .loginForm{
+    @apply w-1/2 lg:w-[40vw] mx-auto mt-[7vh] lg:mt-[18vh] flex flex-col gap-10;
+  }
+  .signupForm{
+    @apply mt-[7vh] w-[70vw] mx-auto;
+  }
+} */
