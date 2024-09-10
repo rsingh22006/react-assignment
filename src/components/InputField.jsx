@@ -22,7 +22,7 @@ export const InputField = ({ name, type = 'text', value, labelValue, show, error
                 <VisibilityIcon show={show} />
             </button>
         }
-        {isPhoneNum && <span className={`absolute top-[20%] left-[-15px] hidden peer-focus:block ${value.length>0?'block':''}`}>+91</span>}
+        {isPhoneNum && <span className={`absolute top-[20%] left-[-15px] peer-focus:block ${value.length>0?'block':'hidden'}`}>+91</span>}
         <label
             htmlFor={name}
             className={`absolute select-none cursor-text text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 origin-[0] left-[3.5%] peer-focus:text-sm ${error ? 'peer-focus:text-error-color text-error-color' : 'peer-focus:text-[#0a856d]'} peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4`}
