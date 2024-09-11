@@ -5,7 +5,7 @@ import { getInputData } from '../utils/getInputData';
 import { useShowPassword } from '../customHooks/useShowPassword';
 import { useFormData } from '../customHooks/useFormData';
 
-const initForm = { name: '', username: '', email: '', phoneNumber: '', newPassword: '', confirmNewPassword: '' };
+const initForm = { name: '', username: '', email: '', phoneNumber: '',password: '', confirmNewPassword: '' };
 
 export const Signup = () => {
     const { formData, errors: errorsObj, handleChange, handleSubmit } = useFormData('signup', initForm);

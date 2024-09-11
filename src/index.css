@@ -30,11 +30,8 @@ code {
   color: #d32f2f;
 }
 
-/* @layer pages{
-  .loginForm{
-    @apply w-1/2 lg:w-[40vw] mx-auto mt-[7vh] lg:mt-[18vh] flex flex-col gap-10;
+@layer components{
+  .inputLabel{
+   @apply absolute select-none cursor-text text-gray-500 duration-300 transform -translate-y-4 scale-75 top-4 origin-[0] left-[3.5%] peer-focus:text-sm peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4;
   }
-  .signupForm{
-    @apply mt-[7vh] w-[70vw] mx-auto;
-  }
-} */
+}

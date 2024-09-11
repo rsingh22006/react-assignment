@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { handleCheckConfirmNewPassword, handleCheckEmail, handleCheckName, handleCheckNewPassword, handleCheckPhoneNumber, handleCheckUsername } from '../utils/validationLogic';
+import { handleCheckConfirmNewPassword, handleCheckEmail, handleCheckName, handleCheckPassword, handleCheckPhoneNumber, handleCheckUsername } from '../utils/validationLogic';
 
 export const useFormData = (type, initData) => {
     const navigate = useNavigate();
@@ -11,22 +11,21 @@ export const useFormData = (type, initData) => {
     }
     const handleGetErrors = () => {
         const checkUsername = handleCheckUsername(formData.username);
-        if (type === 'login'){
-            const checkPassword = handleCheckNewPassword(formData.username, formData.password);
-            const isErrorOccured=checkUsername||checkPassword;
-            return {errors:{checkUsername,checkPassword},isErrorOccured}
+        const checkPassword = handleCheckPassword(formData.username, formData.password);
+        let isErrorOccured = checkUsername || checkPassword;
+        if (type === 'login') {
+            return { errors: { checkUsername, checkPassword }, isErrorOccured }
         }
         else {
             const checkName = handleCheckName(formData.name);
             const checkEmail = handleCheckEmail(formData.email);
             const checkPhoneNumber = handleCheckPhoneNumber(formData.phoneNumber)
-            const checkNewPassword = handleCheckNewPassword(formData.username, formData.newPassword);
-            const checkConfirmNewPassword = handleCheckConfirmNewPassword(formData.newPassword, formData.confirmNewPassword);
-            const isErrorOccured=checkName||checkUsername||checkEmail||checkPhoneNumber||checkNewPassword||checkConfirmNewPassword;
-            return {errors:{checkName,checkUsername,checkEmail,checkPhoneNumber,checkNewPassword,checkConfirmNewPassword},isErrorOccured}
+            const checkConfirmNewPassword = handleCheckConfirmNewPassword(formData.password, formData.confirmNewPassword);
+            isErrorOccured = checkName || checkEmail || checkPhoneNumber || checkConfirmNewPassword;
+            return { errors: { checkName, checkUsername, checkEmail, checkPhoneNumber, checkPassword, checkConfirmNewPassword }, isErrorOccured }
         }
     }
-    const handleSubmit = (e,isErrorOccured) => {
+    const handleSubmit = (e, isErrorOccured) => {
         e.preventDefault();
         if (isErrorOccured) return;
         if (type === 'login') {

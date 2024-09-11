@@ -38,14 +38,13 @@ export const handleCheckPhoneNumber = (phoneNumber) => {
         if (phoneNumber.length>10 || phoneNumber.length < 10) return 'Your PHONE NO. is invalid, it must include 10 numbers';
     }
 }
-export const handleCheckNewPassword = (username, password) => {
+export const handleCheckPassword = (username, password) => {
     let check = containsAlphabetsNumbersAndSpecialChars(password);
     const checkSpace = containsSpace(password);
     if (password?.length > 0) {
         if (checkSpace) {
             return 'PASSWORD must not contain space, please remove that';
-        }
-        if (username === password && !check) {
+        }else if(username === password && !check) {
             return 'USERNAME and PASSWORD should not be same, PASSWORD must contain combination of alphanumeric values with special characters only';
         } else if (username === password) {
             return 'USERNAME and PASSWORD should not be same';
