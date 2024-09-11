@@ -1,3 +1,6 @@
+export const handlePaste = (event) => {
+    if (event.clipboardData.getData('text').includes('e')) event.preventDefault();
+}
 export const handleKeyDown = (event) => {
     const ALPHA = /^[a-zA-Z ]*$/;
     const ALPHA_NUM_CHAR_REGEX = /^[a-zA-Z0-9!@#$%&()*\\-`.+,"]*$/;
@@ -8,7 +11,4 @@ export const handleKeyDown = (event) => {
     }
     else if (event.target.name === 'phoneNumber' && (event.key === '.' || event.key === 'e')) event.preventDefault();
     else if (!ALPHA_NUM_CHAR_REGEX.test(event.key)) event.preventDefault();
-}
-export const handlePaste = (event) => {
-    if (event.clipboardData.getData('text').includes('e')) event.preventDefault();
 }

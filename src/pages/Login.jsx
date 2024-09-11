@@ -2,19 +2,19 @@ import { Link } from 'react-router-dom'
 import { Navbar } from '../components/Navbar';
 import { AuthButton } from '../components/AuthButton';
 import { InputField } from '../components/InputField';
-import { getInputLoginData } from '../utils/authInputData';
+import { getInputData } from '../utils/getInputData';
 import { useShowPassword } from '../customHooks/useShowPassword';
 import { useFormData } from '../customHooks/useFormData';
 
 export const Login = () => {
-  const {formData,errors:errorsObj,handleChange,handleSubmit} = useFormData('login',{username:'',password:''});
-  const {errors,isErrorOccured} = errorsObj;
-  const {showPassword,handleClickShow}=useShowPassword('login');
-  const inputData = getInputLoginData(formData,showPassword,errors);
+  const { formData, errors: errorsObj, handleChange, handleSubmit } = useFormData('login', { username: '', password: '' });
+  const { errors, isErrorOccured } = errorsObj;
+  const { showPassword, handleClickShow } = useShowPassword('login');
+  const inputData = getInputData('login',formData, showPassword, errors);
   return (
     <div>
       <Navbar headtext={'Login'} headtextSize={'4xl'} paraText={'Sign in to continue'} />
-      <form autoComplete='off' className='w-1/2 lg:w-[40vw] mx-auto mt-[7vh] lg:mt-[18vh] flex flex-col gap-10' onSubmit={e=>handleSubmit(e,isErrorOccured)}>
+      <form autoComplete='off' className='w-1/2 lg:w-[40vw] mx-auto mt-[7vh] lg:mt-[18vh] flex flex-col gap-10' onSubmit={e => handleSubmit(e, isErrorOccured)}>
         {inputData.map((el, idx) =>
           <InputField
             key={idx}
@@ -24,7 +24,7 @@ export const Login = () => {
             labelValue={el.labelValue}
             error={el.error}
             handleChange={handleChange}
-            handleClickShow={el.name.toLocaleLowerCase().includes('password')?handleClickShow:''}
+            handleClickShow={el.name.toLocaleLowerCase().includes('password') ? handleClickShow : ''}
           />
         )}
         <AuthButton text='LOGIN' w={'w-40'} />

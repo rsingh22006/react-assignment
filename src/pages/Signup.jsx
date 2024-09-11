@@ -1,17 +1,17 @@
 import { Navbar } from '../components/Navbar';
 import { AuthButton } from '../components/AuthButton';
 import { InputField } from '../components/InputField';
-import { getInputSignupData } from '../utils/authInputData';
+import { getInputData } from '../utils/getInputData';
 import { useShowPassword } from '../customHooks/useShowPassword';
 import { useFormData } from '../customHooks/useFormData';
 
-const initForm={ name: '', username: '', email: '', phoneNumber: '', newPassword: '', confirmNewPassword: '' };
+const initForm = { name: '', username: '', email: '', phoneNumber: '', newPassword: '', confirmNewPassword: '' };
 
 export const Signup = () => {
-    const { formData, errors: errorsObj, handleChange, handleSubmit } = useFormData('signup',initForm);
+    const { formData, errors: errorsObj, handleChange, handleSubmit } = useFormData('signup', initForm);
     const { errors, isErrorOccured } = errorsObj;
     const { showPassword, handleClickShow } = useShowPassword('signup');
-    const inputData = getInputSignupData(formData, showPassword, errors);
+    const inputData = getInputData('signup', formData, showPassword, errors);
     return (
         <div>
             <Navbar headtext={'Create new Account'} />
