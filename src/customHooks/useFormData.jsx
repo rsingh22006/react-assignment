@@ -12,18 +12,12 @@ export const useFormData = (type, initData) => {
     const handleGetErrors = () => {
         const checkUsername = handleCheckUsername(formData.username);
         const checkPassword = handleCheckPassword(formData.username, formData.password);
-        let isErrorOccured = checkUsername || checkPassword;
-        if (type === 'login') {
-            return { errors: { checkUsername, checkPassword }, isErrorOccured }
-        }
-        else {
-            const checkName = handleCheckName(formData.name);
-            const checkEmail = handleCheckEmail(formData.email);
-            const checkPhoneNumber = handleCheckPhoneNumber(formData.phoneNumber)
-            const checkConfirmNewPassword = handleCheckConfirmNewPassword(formData.password, formData.confirmNewPassword);
-            isErrorOccured = checkName || checkEmail || checkPhoneNumber || checkConfirmNewPassword;
-            return { errors: { checkName, checkUsername, checkEmail, checkPhoneNumber, checkPassword, checkConfirmNewPassword }, isErrorOccured }
-        }
+        const checkName = handleCheckName(formData.name);
+        const checkEmail = handleCheckEmail(formData.email);
+        const checkPhoneNumber = handleCheckPhoneNumber(formData.phoneNumber)
+        const checkConfirmNewPassword = handleCheckConfirmNewPassword(formData.password, formData.confirmNewPassword);
+        let isErrorOccured = checkUsername || checkPassword || checkName || checkEmail || checkPhoneNumber || checkConfirmNewPassword;
+        return { errors: { checkUsername, checkPassword, checkName, checkEmail, checkPhoneNumber, checkConfirmNewPassword }, isErrorOccured }
     }
     const handleSubmit = (e, isErrorOccured) => {
         e.preventDefault();

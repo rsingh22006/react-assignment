@@ -20,16 +20,16 @@ export const handleCheckUsername = (username) => {
 }
 export const handleCheckEmail = (email) => {
     const ALPA_NUM = /[a-zA-Z0-9]/;
-    const isFirstCharRight = ALPA_NUM.test(email[0]);
     if (email?.length>0) {
+        const isFirstCharRight = ALPA_NUM.test(email[0]);
         if (!isFirstCharRight) return 'Your EMAIL first word should be a-z or 0-9';
         else if (!validateEmail()) return 'Your EMAIL is invalid';
+        function validateEmail() {
+            let check = /^[a-zA-Z0-9]+@\S+\.com$/;
+            return ((isFirstCharRight && check.test(email) && email?.includes('.com')));
+        }
     }
 
-    function validateEmail() {
-        let check = /^[a-zA-Z0-9]+@\S+\.com$/;
-        return ((isFirstCharRight && check.test(email) && email.includes('.com')));
-    }
 }
 export const handleCheckPhoneNumber = (phoneNumber) => {
     const ALPA_NUM = /^[0-9][^.]*$/;
