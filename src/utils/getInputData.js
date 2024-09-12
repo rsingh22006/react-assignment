@@ -1,5 +1,12 @@
 export const getInputData = (type, formData, showPassword, errors) => {
-    const { checkName, checkUsername, checkEmail, checkPhoneNumber, checkPassword, checkConfirmNewPassword } = errors;
+    const {
+        checkName,
+        checkUsername,
+        checkEmail,
+        checkPhoneNumber,
+        checkPassword,
+        checkConfirmNewPassword
+    } = errors;
     const inputDataObj = {
         name: {
             name: 'name',

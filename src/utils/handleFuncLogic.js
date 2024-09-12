@@ -1,5 +1,7 @@
 export const handlePaste = (event) => {
-    if (event.clipboardData.getData('text').includes('e')) event.preventDefault();
+    if (event.clipboardData.getData('text').includes('e')){
+        event.preventDefault();
+    }
 }
 export const handleKeyDown = (event) => {
     const ALPHA = /^[a-zA-Z ]*$/;

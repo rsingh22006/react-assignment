@@ -16,7 +16,7 @@ export const Login = () => {
       <Navbar headtext={'Login'} headtextSize={'4xl'} paraText={'Sign in to continue'} />
       <form
         autoComplete='off'
-        className='w-1/2 lg:w-[40vw] mx-auto mt-[7vh] lg:mt-[18vh] flex flex-col gap-10'
+        className='loginForm'
         onSubmit={e => handleSubmit(e, isErrorOccured)}
       >
         {inputData.map((el, idx) =>
@@ -31,16 +31,10 @@ export const Login = () => {
             handleClickShow={el.name.toLocaleLowerCase().includes('password') ? handleClickShow : ''}
           />
         )}
-        <AuthButton text='LOGIN' w={'w-40'}
-        />
-        <p
-          className='mt-[-3vh] text-center'
-        >
+        <AuthButton text='LOGIN' w={'w-40'} />
+        <p className='loginOption'>
           Don't have account?
-          <Link
-            className='underline'
-            to='/signup'
-          >
+          <Link className='loginExternalLink' to='/signup'>
             SignUp
           </Link>
         </p>

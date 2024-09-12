@@ -1,8 +1,13 @@
-export const Navbar = ({headtext,headtextSize,paraText}) => {
+export const Navbar = ({ headtext, headtextSize, paraText }) => {
     return (
-        <div className='bg-[#0a856d] text-white h-[10vh] sm:h-[15vh] text-center'>
-            <p className={`pt-[2%] ${headtextSize?`text-${headtextSize}`:''}`}>{headtext}</p>
-            {paraText && <p className='text-gray-300'>{paraText}</p>}
+        <div className='navDiv'>
+            <p className={`navFirstP ${headtextSize ? `text-${headtextSize}` : ''}`}>
+                {headtext}
+            </p>
+            {paraText &&
+                <p className='navSecondP'>
+                    {paraText}
+                </p>}
         </div>
     )
 }

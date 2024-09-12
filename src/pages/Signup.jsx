@@ -15,8 +15,8 @@ export const Signup = () => {
     return (
         <div>
             <Navbar headtext={'Create new Account'} />
-            <form autoComplete='off' className='mt-[7vh] w-[70vw] mx-auto' onSubmit={e => handleSubmit(e, isErrorOccured)}>
-                <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
+            <form autoComplete='off' className='signupForm' onSubmit={e => handleSubmit(e, isErrorOccured)}>
+                <div className='signupUnderFormDiv'>
                     {inputData.map((el, idx) =>
                         <InputField
                             key={idx}
