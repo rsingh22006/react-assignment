@@ -24,6 +24,19 @@
   @apply underline;
 }
 
+/* dashboard */
+.dashboardHeading {
+  @apply text-[green] text-2xl mb-10 text-center;
+}
+
+.dashboardUsersDiv{
+@apply flex justify-evenly items-center;
+}
+
+.dashboardDivP{
+  @apply w-[15%];
+}
+
 @layer components {
   /* Nav */
   .navDiv {

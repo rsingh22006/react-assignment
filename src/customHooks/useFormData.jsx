@@ -24,7 +24,8 @@ export const useFormData = (type, initData) => {
         if (isErrorOccured) return;
         if (type === 'login') {
             setFormData(initData);
-            return alert('Your details has been verified, Thanks!');
+            alert('Your details has been verified, Redirecting to Dashboard Thanks!');
+            return navigate('/dashboard');
         } else {
             const filteredName = formData.name.split(' ').filter(el => el.length > 0);
             let finalName = '';
