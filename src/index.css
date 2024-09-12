@@ -29,12 +29,12 @@
   @apply text-[green] text-2xl mb-10 text-center;
 }
 
-.dashboardUsersDiv{
-@apply flex justify-evenly items-center;
+.dashboardUserDiv{
+  @apply flex justify-evenly items-center gap-2;
 }
 
 .dashboardDivP{
-  @apply w-[15%];
+  @apply w-[10%];
 }
 
 @layer components {
