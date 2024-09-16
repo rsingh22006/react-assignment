@@ -4,19 +4,19 @@ import { Navbar } from '../components/Navbar';
 export const Dashboard = () => {
     const [users, setUsers] = useState([]);
     const hasFetchedData = useRef(false);
-    const handleGetData = async (api) => {
-        try {
-            const response = await fetch(api);
-            const data = await response.json();
-            setUsers(data)
-        } catch (error) {
-            console.log('error', error)
-        }
-    }
     useEffect(() => {
-        if (hasFetchedData.current) return; // Skiping if data already fetched
-        handleGetData('https://jsonplaceholder.typicode.com/users');
-        hasFetchedData.current = true;
+        if (hasFetchedData.current) return;  //Skiping if data already fetched
+        const handleGetData = async (api) => {
+            try {
+                const response = await fetch(api);
+                const data = await response.json();
+                setUsers(data);
+            } catch (error) {
+                console.log('error', error)
+            }
+        }
+        handleGetData('https://jsonplaceholder.typicode.com/users');  //calling API
+        return () => hasFetchedData.current = true;  //cleanup
     }, []);
     return (
         <div>
