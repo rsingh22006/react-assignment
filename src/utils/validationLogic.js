@@ -45,7 +45,6 @@ export const handleCheckEmail = (email) => {
             return ((isFirstCharRight && check.test(email) && email?.includes('.com')));
         }
     }
-
 }
 export const handleCheckPhoneNumber = (phoneNumber) => {
     const ALPA_NUM = /^[0-9][^.]*$/;
