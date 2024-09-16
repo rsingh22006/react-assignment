@@ -30,11 +30,11 @@
 }
 
 .dashboardUserDiv{
-  @apply flex justify-evenly items-center gap-2;
+  @apply flex flex-wrap justify-between items-center gap-2 p-2 border-b border-navSecondP;
 }
 
 .dashboardDivP{
-  @apply w-[10%];
+  @apply w-full p-1 text-center;
 }
 
 @layer components {

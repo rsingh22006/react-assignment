@@ -1,10 +1,10 @@
-import React from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { handleCheckConfirmNewPassword, handleCheckEmail, handleCheckName, handleCheckPassword, handleCheckPhoneNumber, handleCheckUsername } from '../utils/validationLogic';
 
 export const useFormData = (type, initData) => {
     const navigate = useNavigate();
-    const [formData, setFormData] = React.useState(initData);
+    const [formData, setFormData] = useState(initData);
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData({ ...formData, [name]: value });
