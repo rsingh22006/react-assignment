@@ -1,4 +1,4 @@
-export const AuthButton = ({ text, isDisabled = false, w = 'w-56', floatRight = '', m = 'm-auto' }) => {
+export const Button = ({ text, isDisabled = false, w = 'w-56', floatRight = '', m = 'm-auto' }) => {
   return (
     <button
       type='submit'

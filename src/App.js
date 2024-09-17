@@ -1,19 +1,14 @@
 import './App.css';
-import { Signup } from './pages/Signup';
-import { Login } from './pages/Login';
-import { Route, Routes } from 'react-router-dom';
-import { Dashboard } from './pages/Dashboard';
+import { useState, createContext } from 'react';
+import { AllRoutes } from './routes/AllRoutes';
 
+export const UserContext = createContext(null);
 function App() {
+  const [user, setUser] = useState({});
   return (
-    <div>
-      <Routes>
-        <Route path="/" Component={Signup}/>
-        <Route path="/signup" Component={Signup}/>
-        <Route path="/login" Component={Login}/>
-        <Route path="/dashboard" Component={Dashboard}/>
-      </Routes>
-    </div>
+    <UserContext.Provider value={{ user, setUser }}>
+       <AllRoutes/>
+    </UserContext.Provider>
   );
 }
 

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Navbar } from '../components/Navbar';
-import { AuthButton } from '../components/AuthButton';
+import { Button } from '../components/Button';
 import { InputField } from '../components/InputField';
 import { getInputData } from '../utils/getInputData';
 import { useShowPassword } from '../customHooks/useShowPassword';
@@ -9,7 +9,7 @@ import { useFormData } from '../customHooks/useFormData';
 export const Login = () => {
   const { formData, errors: errorsObj, handleChange, handleSubmit } = useFormData('login', { username: '', password: '' });
   const { errors, isErrorOccured } = errorsObj;
-  const { showPassword, handleClickShow } = useShowPassword('login');
+  const { showPassword, handleClickShow } = useShowPassword('single');
   const inputData = getInputData('login', formData, showPassword, errors);
   return (
     <div>
@@ -31,7 +31,7 @@ export const Login = () => {
             handleClickShow={el.name.toLocaleLowerCase().includes('password') ? handleClickShow : ''}
           />
         )}
-        <AuthButton text='LOGIN' w={'w-40'} />
+        <Button text='LOGIN' w={'w-40'} />
         <p className='loginOption'>
           Don't have account?
           <Link className='loginExternalLink' to='/signup'>

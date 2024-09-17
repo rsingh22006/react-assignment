@@ -1,7 +1,8 @@
 import { handleKeyDown, handlePaste } from '../utils/handleFuncLogic';
 import { VisibilityIcon } from './VisibilityIcon';
+import editIcon from '../assets/pen.png'
 
-export const InputField = ({ name, type = 'text', value, labelValue, show, error, handleChange, handleClickShow }) => {
+export const InputField = ({ name, type = 'text', value, labelValue, isEditable = false, show, error, handleChange, handleClickShow }) => {
     const isPhoneNum = name === 'phoneNumber';
     return (
         <div className='inputFieldDiv'>
@@ -26,6 +27,7 @@ export const InputField = ({ name, type = 'text', value, labelValue, show, error
                     <VisibilityIcon show={show} />
                 </button>
             }
+            {isEditable && <img src={editIcon} className='inputFieldEditButton' alt="edit icon" />}
             {isPhoneNum &&
                 <span className={`inputFieldPhoneSpan ${value.length > 0 ? 'block' : 'hidden'}`}>
                     +91

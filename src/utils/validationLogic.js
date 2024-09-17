@@ -12,10 +12,10 @@ export const handleCheckName = (name) => {
     }
 }
 export const handleCheckUsername = (username) => {
-    const checkANS = containsAlphabetsNumbersAndSpecialChars(username);
-    const checkSpace = containsSpace(username);
-    const checkFirstChar = /[A-Za-z]/.test(username[0]);
     if (username?.length > 0) {
+        const checkANS = containsAlphabetsNumbersAndSpecialChars(username);
+        const checkSpace = containsSpace(username);
+        const checkFirstChar = /[A-Za-z]/.test(username[0]);
         if (checkSpace) {
             return 'USERNAME must not contain space, please remove that';
         }
@@ -58,9 +58,9 @@ export const handleCheckPhoneNumber = (phoneNumber) => {
     }
 }
 export const handleCheckPassword = (username, password) => {
-    let check = containsAlphabetsNumbersAndSpecialChars(password);
-    const checkSpace = containsSpace(password);
     if (password?.length > 0) {
+        let check = containsAlphabetsNumbersAndSpecialChars(password);
+        const checkSpace = containsSpace(password);
         if (checkSpace) {
             return 'PASSWORD must not contain space, please remove that';
         } else if (username === password && !check) {

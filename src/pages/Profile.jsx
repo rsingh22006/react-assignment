@@ -1,23 +1,25 @@
+import { useContext } from 'react'
+import { UserContext } from '../App';
 import { Navbar } from '../components/Navbar';
-import { Button } from '../components/Button';
-import { InputField } from '../components/InputField';
+import { useFormData } from '../customHooks/useFormData';
 import { getInputData } from '../utils/getInputData';
 import { useShowPassword } from '../customHooks/useShowPassword';
-import { useFormData } from '../customHooks/useFormData';
+import { Button } from '../components/Button';
+import { InputField } from '../components/InputField';
 
-const initForm = { name: '', username: '', email: '', phoneNumber: '', password: '', confirmNewPassword: '' };
-
-export const Signup = () => {
-    const { formData, errors: errorsObj, handleChange, handleSubmit } = useFormData('signup', initForm);
+export const Profile = () => {
+    // const user = { name: 'Ritik', username: 'ri@1234567', email: 'ri@gmail.com', phoneNumber: '1234567891', password: 'ri@123456' }
+    const { user } = useContext(UserContext);
+    const { showPassword, handleClickShow } = useShowPassword('single');
+    const { formData, errors: errorsObj, handleChange, handleSubmit } = useFormData('profile', user);
     const { errors, isErrorOccured } = errorsObj;
-    const { showPassword, handleClickShow } = useShowPassword('double');
     const inputData = getInputData('all', formData, showPassword, errors);
     return (
         <div>
-            <Navbar headtext={'Create new Account'} />
+            <Navbar headtext={'Profile Page'} />
             <form autoComplete='off' className='signupForm' onSubmit={e => handleSubmit(e, isErrorOccured)}>
                 <div className='signupUnderFormDiv'>
-                    {inputData.map((el, idx) =>
+                    {inputData?.length > 0 && inputData.map((el, idx) =>
                         <InputField
                             key={idx}
                             name={el.name}
@@ -25,13 +27,14 @@ export const Signup = () => {
                             type={el.type}
                             value={el.value}
                             labelValue={el.labelValue}
+                            isEditable={true}
                             error={el.error}
                             handleChange={handleChange}
                             handleClickShow={el.name.toLocaleLowerCase().includes('password') ? handleClickShow : ''}
                         />
                     )}
                 </div>
-                <Button text='SIGN UP' floatRight={'float-right'} />
+                <Button text='Submit Changes' floatRight={'float-right'} />
             </form>
         </div>
     )
