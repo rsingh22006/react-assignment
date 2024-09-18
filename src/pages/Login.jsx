@@ -15,7 +15,6 @@ export const Login = () => {
     <div>
       <Navbar headtext={'Login'} headtextSize={'4xl'} paraText={'Sign in to continue'} />
       <form
-        autoComplete='off'
         className='loginForm'
         onSubmit={e => handleSubmit(e, isErrorOccured)}
       >

@@ -4,12 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
 
 export const Dashboard = () => {
-    const { user } = useContext(UserContext);
+    const {isAuthenticated} = useContext(UserContext);
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
     const hasFetchedData = useRef(false);
     const handleClickProfile = () => {
-        if (Object.keys(user).length<1) {
+        if (!isAuthenticated) {
             alert('You have losted your credentials, if created previously, create again using Signup!')
             navigate('/signup');
         } else {
@@ -33,18 +33,43 @@ export const Dashboard = () => {
     return (
         <div>
             <Navbar headtext={'Dashboard'} />
-            <button onClick={handleClickProfile} className='bg-[yellow] text-[white] font-bold p-2 mt-2 rounded-md'>My Profile</button>
-            <h1 className='dashboardHeading'>Users List</h1>
+            <button
+                onClick={handleClickProfile}
+                className='profileBtn'
+            >
+                My Profile
+            </button>
+            <h1 className='dashboardHeading'>
+                Users List
+            </h1>
             <div>
                 {users?.map(el => {
                     return (
                         <div key={el?.id} className='dashboardUserDiv'>
-                            <p className='dashboardDivP sm:w-1/12'>{el.id}.</p>
-                            <p className='dashboardDivP sm:w-2/12'>{el.username}</p>
-                            <p className='dashboardDivP sm:w-2/12'>{el?.name}</p>
-                            <p className='dashboardDivP sm:w-3/12 md:w-2/12'>{el.email}</p>
-                            <p className='dashboardDivP sm:w-3/12 md:w-2/12'>{el.phone}</p>
-                            <p className='dashboardDivP sm:w-3/12 md:w-2/12'>{el.website}</p>
+                            <p className='dashboardDivP sm:w-1/12'
+                            >
+                                {el.id}.
+                            </p>
+                            <p className='dashboardDivP sm:w-2/12'
+                            >
+                                {el.username}
+                            </p>
+                            <p className='dashboardDivP sm:w-2/12'
+                            >
+                                {el?.name}
+                            </p>
+                            <p className='dashboardDivP sm:w-3/12 md:w-2/12'
+                            >
+                                {el.email}
+                            </p>
+                            <p className='dashboardDivP sm:w-3/12 md:w-2/12'
+                            >
+                                {el.phone}
+                            </p>
+                            <p className='dashboardDivP sm:w-3/12 md:w-2/12'
+                            >
+                                {el.website}
+                            </p>
                         </div>
                     );
                 })}

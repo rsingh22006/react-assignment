@@ -3,7 +3,11 @@ import { Navigate } from "react-router-dom";
 import { UserContext } from "../App";
 
 export const PrivateRoute = ({children}) => {
-    const {user} = useContext(UserContext);
-    const isAuthenticated=Object.keys(user).length>0;
-    return isAuthenticated ? children : <Navigate to="/signup" />;
+    const {isAuthenticated} = useContext(UserContext);
+    if(isAuthenticated){
+        return children;
+    }else{
+        alert('You are not authenticated, Redirecting you to Signup!');
+        return <Navigate to="/signup" />
+    }
 }

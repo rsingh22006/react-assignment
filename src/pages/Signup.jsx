@@ -6,7 +6,6 @@ import { useShowPassword } from '../customHooks/useShowPassword';
 import { useFormData } from '../customHooks/useFormData';
 
 const initForm = { name: '', username: '', email: '', phoneNumber: '', password: '', confirmNewPassword: '' };
-
 export const Signup = () => {
     const { formData, errors: errorsObj, handleChange, handleSubmit } = useFormData('signup', initForm);
     const { errors, isErrorOccured } = errorsObj;
@@ -15,7 +14,10 @@ export const Signup = () => {
     return (
         <div>
             <Navbar headtext={'Create new Account'} />
-            <form autoComplete='off' className='signupForm' onSubmit={e => handleSubmit(e, isErrorOccured)}>
+            <form
+                className='signupForm'
+                onSubmit={e => handleSubmit(e, isErrorOccured)}
+            >
                 <div className='signupUnderFormDiv'>
                     {inputData.map((el, idx) =>
                         <InputField

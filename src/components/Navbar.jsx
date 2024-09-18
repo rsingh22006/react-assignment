@@ -7,7 +7,8 @@ export const Navbar = ({ headtext, headtextSize, paraText }) => {
             {paraText &&
                 <p className='navSecondP'>
                     {paraText}
-                </p>}
+                </p>
+            }
         </div>
     )
 }

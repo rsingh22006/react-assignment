@@ -8,7 +8,6 @@ import { Button } from '../components/Button';
 import { InputField } from '../components/InputField';
 
 export const Profile = () => {
-    // const user = { name: 'Ritik', username: 'ri@1234567', email: 'ri@gmail.com', phoneNumber: '1234567891', password: 'ri@123456' }
     const { user } = useContext(UserContext);
     const { showPassword, handleClickShow } = useShowPassword('single');
     const { formData, errors: errorsObj, handleChange, handleSubmit } = useFormData('profile', user);
@@ -17,7 +16,10 @@ export const Profile = () => {
     return (
         <div>
             <Navbar headtext={'Profile Page'} />
-            <form autoComplete='off' className='signupForm' onSubmit={e => handleSubmit(e, isErrorOccured)}>
+            <form
+                className='signupForm'
+                onSubmit={e => handleSubmit(e, isErrorOccured)}
+            >
                 <div className='signupUnderFormDiv'>
                     {inputData?.length > 0 && inputData.map((el, idx) =>
                         <InputField

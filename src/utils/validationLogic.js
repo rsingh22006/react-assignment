@@ -69,8 +69,8 @@ export const handleCheckPassword = (username, password) => {
             return 'USERNAME and PASSWORD should not be same';
         } else if (!check) {
             return 'PASSWORD must contain combination of alphanumeric values with special characters only';
-        } else if (password.length < 8 || password.length > 20) {
-            return 'PASSWORD must consist minimum 8 or maximum 20 characters';
+        } else if (password.length < 8) {
+            return 'PASSWORD must consist minimum 8 characters';
         }
     }
 }

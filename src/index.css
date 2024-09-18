@@ -29,6 +29,10 @@
   @apply text-[green] text-2xl mb-10 text-center;
 }
 
+.profileBtn{
+  @apply bg-[yellow] text-[white] font-bold p-2 mt-2 rounded-md;
+}
+
 .dashboardUserDiv{
   @apply flex flex-wrap justify-between items-center gap-2 p-2 border-b border-navSecondP;
 }
@@ -61,24 +65,28 @@
     @apply relative flex flex-col w-full justify-center gap-y-2 m-auto;
   }
 
+  .inputFieldChildDiv{
+    @apply flex items-center gap-x-1 border-b-[1px] border-inputLabel hover:border-theme;
+  }
+
   .inputFieldInput {
-    @apply border-b-[1px] border-inputLabel pl-4 pb-2.5 pt-5 w-full text-inputText focus:border-theme focus:outline-none;
-  }
-
-  .inputFieldLabel {
-    @apply absolute select-none cursor-text text-inputLabel duration-300 transform -translate-y-4 scale-75 top-4 origin-[0] left-[3.5%] peer-focus:text-sm peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4;
-  }
-
-  .inputFieldPhoneSpan{
-    @apply absolute top-[20%] left-[-15px] peer-focus:block;
+    @apply pl-4 pb-2.5 pt-5 w-full text-inputText focus:outline-none;
   }
 
   .inputFieldPassButton {
-    @apply absolute top-[20%] right-[10%] text-inputPassButton;
+    @apply text-inputPassButton mt-3;
   }
 
   .inputFieldEditButton {
-    @apply absolute top-[20%] right-0 text-inputPassButton w-7;
+    @apply w-5 text-inputPassButton mt-3;
+  }
+  
+  .inputFieldLabel {
+    @apply absolute select-none cursor-text text-inputLabel duration-300 transform -translate-y-4 scale-75 top-4 left-4 origin-[0] peer-focus:text-sm peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4;
+  }
+
+  .inputFieldPhoneSpan{
+    @apply absolute top-[20%] left-[2%] hidden peer-focus:block;
   }
 
   .inputFieldError {
