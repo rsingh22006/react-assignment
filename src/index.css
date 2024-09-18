@@ -41,6 +41,10 @@
   @apply w-full p-1 text-center;
 }
 
+.loading{
+  @apply text-center mt-10
+}
+
 @layer components {
   /* Nav */
   .navDiv {

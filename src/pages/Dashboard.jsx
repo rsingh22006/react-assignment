@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
 
 export const Dashboard = () => {
-    const {isAuthenticated} = useContext(UserContext);
+    const { isAuthenticated } = useContext(UserContext);
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
     const hasFetchedData = useRef(false);
@@ -43,6 +43,32 @@ export const Dashboard = () => {
                 Users List
             </h1>
             <div>
+                <div className='dashboardUserDiv font-medium'>
+                    <p className='dashboardDivP sm:w-1/12'
+                    >
+                        Sn No.
+                    </p>
+                    <p className='dashboardDivP sm:w-2/12'
+                    >
+                        Username
+                    </p>
+                    <p className='dashboardDivP sm:w-2/12'
+                    >
+                        Name
+                    </p>
+                    <p className='dashboardDivP sm:w-3/12 md:w-2/12'
+                    >
+                        Email
+                    </p>
+                    <p className='dashboardDivP sm:w-3/12 md:w-2/12'
+                    >
+                        Phone No.
+                    </p>
+                    <p className='dashboardDivP sm:w-3/12 md:w-2/12'
+                    >
+                        Website
+                    </p>
+                </div>
                 {users?.map(el => {
                     return (
                         <div key={el?.id} className='dashboardUserDiv'>
@@ -73,6 +99,7 @@ export const Dashboard = () => {
                         </div>
                     );
                 })}
+                {users.length<1 && <p className='loading'>Loading...</p>}
             </div>
         </div>
     )
