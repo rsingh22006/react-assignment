@@ -99,7 +99,7 @@ export const Dashboard = () => {
                         </div>
                     );
                 })}
-                {users.length<1 && <p className='loading'>Loading...</p>}
+                {users.length < 1 && <p className='loading'>Loading...</p>}
             </div>
         </div>
     )
