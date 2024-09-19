@@ -11,7 +11,6 @@ export const Navbar = ({ path }) => {
         else if (path === 'profile') text = 'Profile';
     }
     handleNavDetails();
-    console.log('hi in nav')
     return (
         <div className='navDiv'>
             <p className={`navFirstP ${headtextSize ? `text-${headtextSize}` : ''}`}>
