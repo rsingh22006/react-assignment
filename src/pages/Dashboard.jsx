@@ -1,5 +1,4 @@
 import { useContext} from 'react'
-import { Navbar } from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
 import { UserList } from '../components/UserList';
@@ -18,7 +17,6 @@ export const Dashboard = () => {
     }
     return (
         <div>
-            <Navbar headtext={'Dashboard'} />
             <Button text={'My Profile'} handleClick={handleClickProfile} w='w-40' bg={'bg-[yellow]'} mt='mt-2'/>
             <UserList/>
         </div>

@@ -1,4 +1,4 @@
-export const getInputData = (type, formData, showPassword, errors) => {
+export const getInputData = (isTypeLogin, formData, showPassword, errors) => {
     const {
         checkName,
         checkUsername,
@@ -43,7 +43,7 @@ export const getInputData = (type, formData, showPassword, errors) => {
             name: 'password',
             show: typeof showPassword==='boolean'?showPassword:showPassword.password,
             value: formData?.password,
-            labelValue: type === 'login' ? 'PASSWORD' : 'NEW PASSWORD',
+            labelValue: isTypeLogin === 'login' ? 'PASSWORD' : 'NEW PASSWORD',
             error: checkPassword
         },
         confirmNewPassword: {

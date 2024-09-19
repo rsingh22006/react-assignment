@@ -1,6 +1,6 @@
-import { handleKeyDown, handlePaste } from '../utils/handleFuncLogic';
+import { handleKeyDown, handlePaste } from '../../utils/handleFuncLogic';
 import { VisibilityIcon } from './VisibilityIcon';
-import editIcon from '../assets/edit.png'
+import editIcon from '../../assets/edit.png'
 
 export const InputField = ({ name, type = 'text', value, labelValue, isEditable = false, show, error, handleChange, handleClickShow }) => {
     const isPhoneNum = name === 'phoneNumber';

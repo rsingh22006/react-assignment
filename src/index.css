@@ -2,30 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* signup */
-.signupForm {
-  @apply mt-[7vh] w-[70vw] mx-auto;
+/* signup  & profile*/
+.signupOrProfile{
+  @apply mt-[7vh] w-[70vw] mx-auto relative;
 }
-
-.signupUnderFormDiv {
+.gridType{
   @apply grid grid-cols-1 lg:grid-cols-2 gap-10;
 }
 
 /* login */
-.loginForm {
+.login{
   @apply w-1/2 lg:w-[40vw] mx-auto mt-[7vh] lg:mt-[18vh] flex flex-col gap-10;
 }
 
-.loginOption {
-  @apply mt-[-3vh] text-center;
+.loginOption{
+  @apply mt-5 text-center;
 }
 
-.loginExternalLink {
+.loginExternalLink{
   @apply underline;
 }
 
 /* dashboard */
-.dashboardHeading {
+.dashboardHeading{
   @apply text-[green] text-2xl mb-10 text-center;
 }
 
@@ -41,27 +40,27 @@
   @apply text-center mt-10
 }
 
-@layer components {
+@layer components{
   /* Nav */
-  .navDiv {
+  .navDiv{
     @apply bg-theme text-[white] h-[10vh] sm:h-[15vh] text-center;
   }
 
-  .navFirstP {
+  .navFirstP{
     @apply pt-[2%];
   }
 
-  .navSecondP {
+  .navSecondP{
     @apply text-navSecondP;
   }
 
   /* Button */
-  .button {
-    @apply text-[white] font-bold h-10 rounded-lg;
+  .button{
+    @apply text-[white] font-bold h-10 rounded-lg uppercase;
   }
 
   /* InputField */
-  .inputFieldDiv {
+  .inputFieldDiv{
     @apply relative flex flex-col w-full justify-center gap-y-2 m-auto;
   }
 
@@ -69,19 +68,19 @@
     @apply flex items-center gap-x-1 border-b-[1px] border-inputLabel hover:border-theme;
   }
 
-  .inputFieldInput {
+  .inputFieldInput{
     @apply pl-4 pb-2.5 pt-5 w-full text-inputText focus:outline-none;
   }
 
-  .inputFieldPassButton {
+  .inputFieldPassButton{
     @apply text-inputPassButton mt-3;
   }
 
-  .inputFieldEditButton {
+  .inputFieldEditButton{
     @apply w-5 text-inputPassButton mt-3;
   }
   
-  .inputFieldLabel {
+  .inputFieldLabel{
     @apply absolute select-none cursor-text text-inputLabel duration-300 transform -translate-y-4 scale-75 top-4 left-4 origin-[0] peer-focus:text-sm peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4;
   }
 
@@ -89,7 +88,7 @@
     @apply absolute top-[20%] left-[2%] hidden peer-focus:block;
   }
 
-  .inputFieldError {
+  .inputFieldError{
     @apply text-left text-error text-xs sm:text-sm pl-4 h-10;
   }
 }

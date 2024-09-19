@@ -21,7 +21,7 @@ export const useFormData = (type, initData) => {
         let isErrorOccured = checkUsername || checkPassword || checkName || checkEmail || checkPhoneNumber || checkConfirmNewPassword;
         return { errors: { checkUsername, checkPassword, checkName, checkEmail, checkPhoneNumber, checkConfirmNewPassword }, isErrorOccured }
     }
-    const handleSubmit = (e, isErrorOccured) => {
+    const handleSubmit = (e,isErrorOccured) => {
         e.preventDefault();
         if (isErrorOccured) return;
         if (type === 'login') {

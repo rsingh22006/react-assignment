@@ -1,43 +1,17 @@
 import { Link } from 'react-router-dom'
-import { Navbar } from '../components/Navbar';
-import { Button } from '../components/Button';
-import { InputField } from '../components/InputField';
-import { getInputData } from '../utils/getInputData';
-import { useShowPassword } from '../customHooks/useShowPassword';
-import { useFormData } from '../customHooks/useFormData';
+import { Form } from '../components/Form/Form';
+import { initLoginData } from '../utils/initData';
 
 export const Login = () => {
-  const { formData, errors: errorsObj, handleChange, handleSubmit } = useFormData('login', { username: '', password: '' });
-  const { errors, isErrorOccured } = errorsObj;
-  const { showPassword, handleClickShow } = useShowPassword('single');
-  const inputData = getInputData('login', formData, showPassword, errors);
   return (
     <div>
-      <Navbar headtext={'Login'} headtextSize={'4xl'} paraText={'Sign in to continue'} />
-      <form
-        className='loginForm'
-        onSubmit={e => handleSubmit(e, isErrorOccured)}
-      >
-        {inputData.map((el) =>
-          <InputField
-            key={el.id}
-            name={el.name}
-            show={el?.show}
-            value={el.value}
-            labelValue={el.labelValue}
-            error={el.error}
-            handleChange={handleChange}
-            handleClickShow={el.name.toLocaleLowerCase().includes('password') ? handleClickShow : ''}
-          />
-        )}
-        <Button text='LOGIN' w={'w-40'} bg={'bg-theme'} />
-        <p className='loginOption'>
-          Don't have account?
-          <Link className='loginExternalLink' to='/signup'>
-            SignUp
-          </Link>
-        </p>
-      </form>
+      <Form type={'login'} className={'login'} initData={initLoginData}/>
+      <p className='loginOption'>
+        Don't have account?
+        <Link className='loginExternalLink' to='/signup'>
+          SignUp
+        </Link>
+      </p>
     </div>
   )
 }
