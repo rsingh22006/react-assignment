@@ -21,9 +21,9 @@ export const Profile = () => {
                 onSubmit={e => handleSubmit(e, isErrorOccured)}
             >
                 <div className='signupUnderFormDiv'>
-                    {inputData?.length > 0 && inputData.map((el, idx) =>
+                    {inputData?.length > 0 && inputData.map(el =>
                         <InputField
-                            key={idx}
+                            key={el.id}
                             name={el.name}
                             show={el.show}
                             type={el.type}
@@ -36,7 +36,7 @@ export const Profile = () => {
                         />
                     )}
                 </div>
-                <Button text='Submit Changes' floatRight={'float-right'} />
+                <Button text='Submit Changes' floatRight={'float-right'} bg={'bg-theme'} />
             </form>
         </div>
     )

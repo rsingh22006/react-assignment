@@ -7,6 +7,8 @@ import { useFormData } from '../customHooks/useFormData';
 
 const initForm = { name: '', username: '', email: '', phoneNumber: '', password: '', confirmNewPassword: '' };
 export const Signup = () => {
+    console.log('crypto.randomUUID()',crypto.randomUUID())
+    // const randomId = crypto.randomUUID()
     const { formData, errors: errorsObj, handleChange, handleSubmit } = useFormData('signup', initForm);
     const { errors, isErrorOccured } = errorsObj;
     const { showPassword, handleClickShow } = useShowPassword('double');
@@ -19,9 +21,9 @@ export const Signup = () => {
                 onSubmit={e => handleSubmit(e, isErrorOccured)}
             >
                 <div className='signupUnderFormDiv'>
-                    {inputData.map((el, idx) =>
+                    {inputData.map(el =>
                         <InputField
-                            key={idx}
+                            key={el.id}
                             name={el.name}
                             show={el.show}
                             type={el.type}
@@ -33,7 +35,7 @@ export const Signup = () => {
                         />
                     )}
                 </div>
-                <Button text='SIGN UP' floatRight={'float-right'} />
+                <Button text='SIGN UP' floatRight={'float-right'} bg={'bg-theme'} />
             </form>
         </div>
     )

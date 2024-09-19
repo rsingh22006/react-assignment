@@ -9,18 +9,21 @@ export const getInputData = (type, formData, showPassword, errors) => {
     } = errors;
     const inputDataObj = {
         name: {
+            id:1,
             name: 'name',
             value: formData?.name,
             labelValue: 'NAME',
             error: checkName
         },
         username: {
+            id:2,
             name: 'username',
             value: formData?.username,
             labelValue: 'USERNAME',
             error: checkUsername
         },
         email: {
+            id:3,
             name: 'email',
             type: 'email',
             value: formData?.email,
@@ -28,6 +31,7 @@ export const getInputData = (type, formData, showPassword, errors) => {
             error: checkEmail
         },
         phoneNumber: {
+            id:4,
             name: 'phoneNumber',
             type: 'number',
             value: formData?.phoneNumber,
@@ -35,6 +39,7 @@ export const getInputData = (type, formData, showPassword, errors) => {
             error: checkPhoneNumber
         },
         password: {
+            id:5,
             name: 'password',
             show: typeof showPassword==='boolean'?showPassword:showPassword.password,
             value: formData?.password,
@@ -42,6 +47,7 @@ export const getInputData = (type, formData, showPassword, errors) => {
             error: checkPassword
         },
         confirmNewPassword: {
+            id:6,
             name: 'confirmNewPassword',
             show: showPassword.confirmNewPassword,
             value: formData?.confirmNewPassword,

@@ -29,10 +29,6 @@
   @apply text-[green] text-2xl mb-10 text-center;
 }
 
-.profileBtn{
-  @apply bg-[yellow] text-[white] font-bold p-2 mt-2 rounded-md;
-}
-
 .dashboardUserDiv{
   @apply flex flex-wrap justify-between items-center gap-2 p-2 border-b border-navSecondP;
 }
@@ -59,9 +55,9 @@
     @apply text-navSecondP;
   }
 
-  /* AuthButton */
-  .authButton {
-    @apply bg-theme text-[white] h-10 rounded-lg
+  /* Button */
+  .button {
+    @apply text-[white] font-bold h-10 rounded-lg;
   }
 
   /* InputField */

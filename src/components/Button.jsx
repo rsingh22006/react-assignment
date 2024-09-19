@@ -1,9 +1,10 @@
-export const Button = ({ text, isDisabled = false, w = 'w-56', floatRight = '', m = 'm-auto' }) => {
+export const Button = ({ text,handleClick, isDisabled = false, w = 'w-56',bg, floatRight = '', m = 'm-auto',mt }) => {
   return (
     <button
       type='submit'
       disabled={isDisabled}
-      className={`authButton ${w} ${floatRight} ${m}`}
+      className={`button ${w} ${floatRight} ${m} ${mt} ${bg}`}
+      onClick={handleClick}
     >
       {text}
     </button>

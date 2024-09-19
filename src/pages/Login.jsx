@@ -18,9 +18,9 @@ export const Login = () => {
         className='loginForm'
         onSubmit={e => handleSubmit(e, isErrorOccured)}
       >
-        {inputData.map((el, idx) =>
+        {inputData.map((el) =>
           <InputField
-            key={idx}
+            key={el.id}
             name={el.name}
             show={el?.show}
             value={el.value}
@@ -30,7 +30,7 @@ export const Login = () => {
             handleClickShow={el.name.toLocaleLowerCase().includes('password') ? handleClickShow : ''}
           />
         )}
-        <Button text='LOGIN' w={'w-40'} />
+        <Button text='LOGIN' w={'w-40'} bg={'bg-theme'} />
         <p className='loginOption'>
           Don't have account?
           <Link className='loginExternalLink' to='/signup'>
