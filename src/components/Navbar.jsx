@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { handleNavDetails } from "../utils/handleFuncLogic";
 import { UserContext } from "../App";
+import { handleNavDetails } from "../utils/handleFuncLogic";
 
-export const Navbar = ({ path }) => {
+export const Navbar = ({path}) => {
     const {isAuthenticated} = useContext(UserContext);
     const {text,paraText,headtextSize} = handleNavDetails(path,isAuthenticated);
     return (

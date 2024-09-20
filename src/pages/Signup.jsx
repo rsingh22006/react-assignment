@@ -1,12 +1,16 @@
 import { Form } from '../components/Form/Form';
+import { Navbar } from '../components/Navbar';
 import { initSignupData } from '../utils/initData';
 
 export const Signup = () => {
     return (
-        <Form
-            type={'signup'}
-            className={'signupOrProfile'}
-            initData={initSignupData}
-        />
+        <>
+            <Navbar path={'signup'}/>
+            <Form
+                type={'signup'}
+                className={'signupOrProfile'}
+                initData={initSignupData}
+            />
+        </>
     )
 }
