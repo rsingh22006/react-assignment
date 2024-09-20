@@ -5,6 +5,10 @@ import { Form } from '../components/Form/Form';
 export const Profile = () => {
     const { user } = useContext(UserContext);
     return (
-        <Form type={'profile'} className={'signupOrProfile'} initData={user} />
+        <Form
+            type={'profile'}
+            className={'signupOrProfile'}
+            initData={user}
+        />
     )
 }

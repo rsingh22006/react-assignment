@@ -27,7 +27,13 @@ export const Form = ({ type, className, initData }) => {
                     />
                 )}
             </div>
-            <Button type='submit' text={type === 'profile' ? 'Submit Changes' : type} w={'w-40'} bg={'bg-theme'} isGrid={type!== 'login' ? 'absolute right-0' : ''} />
+            <Button
+                type='submit'
+                text={type === 'profile' ? 'Submit Changes' : type}
+                w={'w-40'}
+                bg={'bg-theme'}
+                isGrid={type !== 'login' ? 'absolute right-0' : ''}
+            />
         </form>
     )
 }

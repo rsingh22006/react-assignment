@@ -20,7 +20,7 @@ export const UserList = () => {
     return (
         <div>
             <h1 className='dashboardHeading'>
-                Users List
+                User List
             </h1>
             <div>
                 <div className='dashboardUserDiv font-medium'>
@@ -79,7 +79,11 @@ export const UserList = () => {
                         </div>
                     );
                 })}
-                {users.length < 1 && <p className='loading'>Loading...</p>}
+                {users.length < 1 &&
+                    <p className='loading'>
+                        Loading...
+                    </p>
+                }
             </div>
         </div>
     )

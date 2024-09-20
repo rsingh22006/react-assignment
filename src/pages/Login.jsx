@@ -5,7 +5,11 @@ import { initLoginData } from '../utils/initData';
 export const Login = () => {
   return (
     <div>
-      <Form type={'login'} className={'login'} initData={initLoginData}/>
+      <Form
+        type={'login'}
+        className={'login'}
+        initData={initLoginData}
+      />
       <p className='loginOption'>
         Don't have account?
         <Link className='loginExternalLink' to='/signup'>

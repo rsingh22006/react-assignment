@@ -19,3 +19,17 @@ export const handleKeyDown = (event) => {
         event.preventDefault();
     }
 }
+
+export const handleNavDetails = (path,isAuthenticated) => {
+    let text='',paraText='',headtextSize='';
+    if (!path || path === 'signup') text = 'Create new Account';
+    else if (path === 'login') {
+        text = 'Login';
+        paraText = 'Sign in to continue';
+        headtextSize = '4xl';
+    }
+    else if (path === 'dashboard') text = 'Dashboard';
+    else if (path === 'profile' && isAuthenticated) text = 'Profile';
+    else if (path === 'profile' && !isAuthenticated) text = 'Signup';
+    return {text,paraText,headtextSize};
+}

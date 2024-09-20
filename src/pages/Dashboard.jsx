@@ -1,4 +1,4 @@
-import { useContext} from 'react'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
 import { UserList } from '../components/UserList';
@@ -17,8 +17,14 @@ export const Dashboard = () => {
     }
     return (
         <div>
-            <Button text={'My Profile'} handleClick={handleClickProfile} w='w-40' bg={'bg-[yellow]'} mt='mt-2'/>
-            <UserList/>
+            <Button
+                text={'My Profile'}
+                handleClick={handleClickProfile}
+                w='w-40'
+                bg={'bg-[yellow]'}
+                mt='mt-2'
+            />
+            <UserList />
         </div>
     )
 }
