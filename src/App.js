@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, createContext } from 'react';
 import { AllRoutes } from './routes/AllRoutes';
+import { Navbar } from './components/Navbar';
 // import { profileDummyData } from './utils/initData';
 
 export const UserContext = createContext(null);
@@ -9,7 +10,8 @@ export default function App() {
   // const [user, setUser] = useState(profileDummyData);
   const [user, setUser] = useState({});
   return (
-    <UserContext.Provider value={{ user, setUser, isAuthenticated: Object.keys(user).length > 0}}>
+    <UserContext.Provider value={{ user, setUser, isAuthenticated: Object.keys(user).length > 0 }}>
+      <Navbar/>
       <AllRoutes />
     </UserContext.Provider>
   );

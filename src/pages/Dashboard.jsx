@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
 import { UserList } from '../components/UserList';
 import { Button } from '../components/Button';
-import { Navbar } from '../components/Navbar';
 
 export const Dashboard = () => {
     const { isAuthenticated } = useContext(UserContext);
@@ -18,7 +17,6 @@ export const Dashboard = () => {
     }
     return (
         <>
-            <Navbar path={'dashboard'}/>
             <Button
                 text={'My Profile'}
                 handleClick={handleClickProfile}
