@@ -1,59 +1,47 @@
 export const getInputData = (isTypeLogin, formData, showPassword, errors) => {
-    const {
-        checkName,
-        checkUsername,
-        checkEmail,
-        checkPhoneNumber,
-        checkPassword,
-        checkConfirmNewPassword
-    } = errors;
     const inputDataObj = {
         name: {
-            id:1,
             name: 'name',
             value: formData?.name,
             labelValue: 'NAME',
-            error: checkName
+            error: errors?.checkName
         },
         username: {
-            id:2,
             name: 'username',
             value: formData?.username,
             labelValue: 'USERNAME',
-            error: checkUsername
+            error: errors?.checkUsername
         },
         email: {
-            id:3,
             name: 'email',
             type: 'email',
             value: formData?.email,
             labelValue: 'EMAIL',
-            error: checkEmail
+            error: errors?.checkEmail
         },
         phoneNumber: {
-            id:4,
             name: 'phoneNumber',
             type: 'number',
             value: formData?.phoneNumber,
             labelValue: 'PHONE NO.',
-            error: checkPhoneNumber
+            error: errors?.checkPhoneNumber
         },
         password: {
-            id:5,
             name: 'password',
             show: typeof showPassword==='boolean'?showPassword:showPassword.password,
             value: formData?.password,
             labelValue: isTypeLogin === 'login' ? 'PASSWORD' : 'NEW PASSWORD',
-            error: checkPassword
+            error: errors?.checkPassword
         },
         confirmNewPassword: {
-            id:6,
             name: 'confirmNewPassword',
             show: showPassword.confirmNewPassword,
             value: formData?.confirmNewPassword,
             labelValue: 'CONFIRM NEW PASSWORD',
-            error: checkConfirmNewPassword
+            error: errors?.checkConfirmNewPassword
         }
     }
-    return Object.keys(formData).map(el => inputDataObj[el])
+    return Object.keys(formData).map((el,idx) =>{
+        return {...inputDataObj[el],id:idx+1}
+    })
 }
