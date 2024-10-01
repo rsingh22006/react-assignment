@@ -1,4 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react';
+import { Box } from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
+
+const columns = [
+    { field: 'id', headerName: 'Sn No.', width: 90 },
+    { field: 'username', headerName: 'Username', width: 150 },
+    { field: 'name', headerName: 'Name', width: 150 },
+    { field: 'email', headerName: 'Email', width: 200 },
+    { field: 'phone', headerName: 'Phone No.', width: 200 },
+    { field: 'website', headerName: 'Website', width: 150 },
+]
 
 export const UserList = () => {
     const [users, setUsers] = useState([]);
@@ -22,7 +33,8 @@ export const UserList = () => {
             <h1 className='dashboardHeading'>
                 User List
             </h1>
-            <div>
+
+            {/* <div>
                 <div className='dashboardUserDiv font-medium'>
                     <p className='dashboardDivP sm:w-1/12'
                     >
@@ -84,7 +96,23 @@ export const UserList = () => {
                         Loading...
                     </p>
                 }
-            </div>
+            </div> */}
+            <Box sx={{ height: 400, width: '100%' }}>
+                <DataGrid
+                    rows={users}
+                    columns={columns}
+                    initialState={{
+                        pagination: {
+                            paginationModel: {
+                                pageSize: 5,
+                            },
+                        },
+                    }}
+                    pageSizeOptions={[5]}
+                    checkboxSelection
+                    disableRowSelectionOnClick
+                />
+            </Box>
         </div>
     )
 }
